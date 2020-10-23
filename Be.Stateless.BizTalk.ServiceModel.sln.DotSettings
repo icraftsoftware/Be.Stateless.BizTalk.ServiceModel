@@ -1,0 +1,30 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=1CD4AA5780454441AFFE12D572F4C5F9/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=1CD4AA5780454441AFFE12D572F4C5F9/AbsolutePath/@EntryValue">C:\Files\Projects\icraftsoftware\BizTalk.ServiceModel\.settings\CodeInspection.DotSettings</s:String>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=1CD4AA5780454441AFFE12D572F4C5F9/RelativePath/@EntryValue">..\.settings\CodeInspection.DotSettings</s:String>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=28712AA965C07340A6D53687874407B1/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=28712AA965C07340A6D53687874407B1/AbsolutePath/@EntryValue">C:\Files\Projects\icraftsoftware\BizTalk.ServiceModel\.settings\CodeEditing.FileHeader.DotSettings</s:String>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=28712AA965C07340A6D53687874407B1/RelativePath/@EntryValue">..\.settings\CodeEditing.FileHeader.DotSettings</s:String>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=3A50F570678A5C42B25151BE028D90AC/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=3A50F570678A5C42B25151BE028D90AC/AbsolutePath/@EntryValue">C:\Files\Projects\icraftsoftware\BizTalk.ServiceModel\.settings\PatternsAndTemplates.DotSettings</s:String>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=3A50F570678A5C42B25151BE028D90AC/RelativePath/@EntryValue">..\.settings\PatternsAndTemplates.DotSettings</s:String>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=8D8DC054D47872478EA8E3F2DB470E1D/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=8D8DC054D47872478EA8E3F2DB470E1D/AbsolutePath/@EntryValue">C:\Files\Projects\icraftsoftware\BizTalk.ServiceModel\.settings\CodeEditing.DotSettings</s:String>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=8D8DC054D47872478EA8E3F2DB470E1D/RelativePath/@EntryValue">..\.settings\CodeEditing.DotSettings</s:String>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=AD76E8C2C25CED47A6FA160551990498/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=AD76E8C2C25CED47A6FA160551990498/AbsolutePath/@EntryValue">C:\Files\Projects\icraftsoftware\BizTalk.ServiceModel\.settings\Environment.DotSettings</s:String>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=AD76E8C2C25CED47A6FA160551990498/RelativePath/@EntryValue">..\.settings\Environment.DotSettings</s:String>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File1CD4AA5780454441AFFE12D572F4C5F9/@KeyIndexDefined">True</s:Boolean>
+	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File1CD4AA5780454441AFFE12D572F4C5F9/RelativePriority/@EntryValue">3</s:Double>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File28712AA965C07340A6D53687874407B1/@KeyIndexDefined">True</s:Boolean>
+	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File28712AA965C07340A6D53687874407B1/RelativePriority/@EntryValue">2</s:Double>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File3A50F570678A5C42B25151BE028D90AC/@KeyIndexDefined">True</s:Boolean>
+	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File3A50F570678A5C42B25151BE028D90AC/RelativePriority/@EntryValue">5</s:Double>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File8D8DC054D47872478EA8E3F2DB470E1D/@KeyIndexDefined">True</s:Boolean>
+	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File8D8DC054D47872478EA8E3F2DB470E1D/RelativePriority/@EntryValue">1</s:Double>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileAD76E8C2C25CED47A6FA160551990498/@KeyIndexDefined">True</s:Boolean>
+	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileAD76E8C2C25CED47A6FA160551990498/RelativePriority/@EntryValue">4</s:Double>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Chabot/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Fran_00E7ois/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=stubservice/@EntryIndexedValue">True</s:Boolean>
+</wpf:ResourceDictionary>

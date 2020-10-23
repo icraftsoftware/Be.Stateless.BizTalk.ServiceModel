@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>Be.Stateless.BizTalk</RootNamespace>
+    <AssemblyTitle>Be.Stateless.BizTalk.ServiceModel.Unit.Tests</AssemblyTitle>
+    <Description>Unit tests for BizTalk.Factory's WCF service model unit test library for general purpose Biztalk Server development.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Be.Stateless.BizTalk.Messaging" Version="2.0.20296.42669" />
+    <PackageReference Include="Be.Stateless.Common.Unit" Version="2.0.20296.38588" />
+    <PackageReference Include="Be.Stateless.Stream" Version="2.0.20296.38697" />
+    <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.msbuild" Version="2.9.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.0" />
+    <PackageReference Include="Moq" Version="4.13.1" />
+    <PackageReference Include="xunit.core" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\.settings\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Be.Stateless.BizTalk.ServiceModel.Unit\Be.Stateless.BizTalk.ServiceModel.Unit.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.ServiceModel" />
+  </ItemGroup>
+
+</Project>
