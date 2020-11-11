@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,8 +17,6 @@
 #endregion
 
 using System.ComponentModel;
-using System.IO;
-using Be.Stateless.BizTalk.Dsl;
 using Microsoft.BizTalk.Component.Interop;
 
 namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
@@ -27,21 +25,21 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 	/// A scaffolding interface to support setting up response against <see cref="DocumentSpec"/> message type expectations. It
 	/// is not meant to be used in user code.
 	/// </summary>
-	/// <seealso cref="StubService"/>
+	/// <seealso cref="SoapStub"/>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public interface ISolicitResponse : IFluentInterface
 	{
 		/// <summary>
-		/// A generic <see cref="Request"/> operation used to support the setting up of the response <see cref="Stream"/> to be
-		/// returned upon the invocation of the <see cref="ISolicitResponse.Request"/> operation with a message of some <see
-		/// cref="DocumentSpec"/> type.
+		/// A generic <see cref="Request"/> operation used to support the setting up of the response <see
+		/// cref="System.IO.Stream"/> to be returned upon the invocation of the <see cref="ISolicitResponse.Request"/> operation
+		/// with a message of some <see cref="DocumentSpec"/> type.
 		/// </summary>
 		/// <param name="documentSpec">
 		/// The expected <see cref="DocumentSpec"/> of some incoming message for which a response needs to be setup.
 		/// </param>
 		/// <returns>
-		/// The response message <see cref="Stream"/>.
+		/// The response message <see cref="System.IO.Stream"/>.
 		/// </returns>
-		Stream Request(DocumentSpec documentSpec);
+		System.IO.Stream Request(DocumentSpec documentSpec);
 	}
 }

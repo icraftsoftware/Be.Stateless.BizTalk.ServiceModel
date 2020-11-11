@@ -16,12 +16,14 @@
 
 #endregion
 
+using Be.Stateless.BizTalk.Unit.ServiceModel.Channels;
+
 namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 {
 	/// <summary>
 	/// Allows to either setup the response that has to be returned, or an abort that has to be carried out by the <see
-	/// cref="IStubService"/> stub service upon either the reception of some request message or the invocation of some SOAP
-	/// action.
+	/// cref="IMessageService"/> or <see cref="ISolicitResponse"/> soap stub upon either the reception of some request message
+	/// or the invocation of some SOAP action.
 	/// </summary>
 	/// <typeparam name="TContract">
 	/// The the service contract to which belong operation that is being setup.

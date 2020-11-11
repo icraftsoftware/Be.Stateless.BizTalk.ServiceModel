@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -30,7 +30,6 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 	/// cref="ISetupOperation{TContract}"/> in terms of either SOAP actions or in terms of <see cref="DocumentSpec"/> message
 	/// types.
 	/// </summary>
-	[SuppressMessage("Performance", "CA1822:Mark members as static")]
 	[SuppressMessage("ReSharper", "MemberCanBeMadeStatic.Local")]
 	internal class OperationCallSetupCollection
 	{
@@ -86,7 +85,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 
 		private OperationCallSetup Add(string key, Func<OperationCallSetup> operationCallSetupFactory)
 		{
-			return _setups.AddOrUpdate(key, k => operationCallSetupFactory(), (k, s) => operationCallSetupFactory());
+			return _setups.AddOrUpdate(key, _ => operationCallSetupFactory(), (_, _) => operationCallSetupFactory());
 		}
 
 		internal void Clear()
@@ -94,6 +93,6 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 			_setups.Clear();
 		}
 
-		private static readonly ConcurrentDictionary<string, OperationCallSetup> _setups = new ConcurrentDictionary<string, OperationCallSetup>();
+		private static readonly ConcurrentDictionary<string, OperationCallSetup> _setups = new();
 	}
 }

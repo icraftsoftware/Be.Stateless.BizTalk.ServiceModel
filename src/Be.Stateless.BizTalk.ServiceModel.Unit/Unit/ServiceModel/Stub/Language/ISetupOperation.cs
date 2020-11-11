@@ -17,25 +17,29 @@
 #endregion
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
-using Be.Stateless.BizTalk.Dsl;
+using Be.Stateless.BizTalk.Unit.ServiceModel.Channels;
 
 namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 {
 	/// <summary>
-	/// Allows to clear all setups that has been performed against the <see cref="IStubService"/> stub service.
+	/// Allows to clear all setups that has been performed against the <see cref="IMessageService"/> or <see
+   /// cref="ISolicitResponse"/> soap stub.
 	/// </summary>
+	[SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Public API.")]
 	public interface ISetupOperation
 	{
 		/// <summary>
-		/// Clear all setups that has been performed so far against the <see cref="IStubService"/> stub service.
+		/// Clear all setups that has been performed so far against the <see cref="IMessageService"/> or <see
+      /// cref="ISolicitResponse"/> soap stub.
 		/// </summary>
 		void ClearSetups();
 	}
 
 	/// <summary>
-	/// Allows to setup what the <see cref="IStubService"/> stub service has to perform upon the invocation of some SOAP action,
-	/// that is a service contract's operation.
+	/// Allows to setup what the <see cref="IMessageService"/> or <see cref="ISolicitResponse"/> soap stub has to perform upon
+	/// the invocation of some SOAP action, that is a service contract's operation.
 	/// </summary>
 	/// <typeparam name="TContract">
 	/// The the service contract to which belong operation that is being setup.
@@ -44,8 +48,8 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 		where TContract : class { }
 
 	/// <summary>
-	/// Allows to setup what the <see cref="IStubService"/> stub service has to perform upon the invocation of some SOAP action,
-	/// that is a service contract's operation.
+	/// Allows to setup what the <see cref="IMessageService"/> or <see cref="ISolicitResponse"/> soap stub has to perform upon
+	/// the invocation of some SOAP action, that is a service contract's operation.
 	/// </summary>
 	/// <typeparam name="TContract">
 	/// The the service contract to which belong operation that is being setup.
@@ -54,8 +58,8 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 		where TContract : class
 	{
 		/// <summary>
-		/// Allows to setup what the <see cref="IStubService"/> stub service has to perform upon either the invocation of some
-		/// SOAP action, that is service contract operation, that produces no result.
+		/// Allows to setup what the <see cref="IMessageService"/> or <see cref="ISolicitResponse"/> soap stub has to perform
+		/// upon either the invocation of some SOAP action, that is service contract operation, that produces no result.
 		/// </summary>
 		/// <param name="operation">
 		/// The expression tree denoting the operation contract for which a setup is being made.
@@ -68,8 +72,8 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 	}
 
 	/// <summary>
-	/// Allows to setup what the <see cref="IStubService"/> stub service has to perform upon the invocation of some SOAP action,
-	/// that is a service contract's operation.
+	/// Allows to setup what the <see cref="IMessageService"/> or <see cref="ISolicitResponse"/> soap stub has to perform upon
+	/// the invocation of some SOAP action, that is a service contract's operation.
 	/// </summary>
 	/// <typeparam name="TContract">
 	/// The the service contract to which belong operation that is being setup.
@@ -78,8 +82,9 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 		where TContract : class
 	{
 		/// <summary>
-		/// Allows to setup what the <see cref="IStubService"/> stub service has to perform upon either the invocation of some
-		/// SOAP action, that is service contract operation, that produces a result of type <typeparamref name="TResult"/>.
+		/// Allows to setup what the <see cref="IMessageService"/> or <see cref="ISolicitResponse"/> soap stub has to perform
+		/// upon either the invocation of some SOAP action, that is service contract operation, that produces a result of type
+      /// <typeparamref name="TResult"/>.
 		/// </summary>
 		/// <typeparam name="TResult">
 		/// The type of the result produced by the <paramref name="operation"/> being performed.

@@ -16,12 +16,14 @@
 
 #endregion
 
+using Be.Stateless.BizTalk.Unit.ServiceModel.Channels;
+
 namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 {
 	/// <summary>
 	/// Allows to setup the various operations, like executing a callback or returning a specific response or aborting, that are
-	/// to be carried out by the <see cref="IStubService"/> stub service upon either the reception of some request message or
-	/// the invocation of some SOAP action.
+	/// to be carried out by the <see cref="IMessageService"/> or <see cref="ISolicitResponse"/> soap stub upon either the
+	/// reception of some request message or the invocation of some SOAP action.
 	/// </summary>
 	/// <typeparam name="TContract">
 	/// The the service contract to which belong operation that is being setup.
@@ -30,13 +32,13 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 		where TContract : class { }
 
 	/// <summary>
-	/// Allows to setup the response that has to be returned by the <see cref="IStubService"/> upon either the reception of some
-	/// request message or the invocation of some SOAP action.
+	/// Allows to setup the response that has to be returned by the <see cref="IMessageService"/> upon either the reception of
+	/// some request message or the invocation of some SOAP action.
 	/// </summary>
 	/// <summary>
 	/// Allows to setup the various operations, like executing a callback or returning a specific response or aborting, that are
-	/// to be carried out by the <see cref="IStubService"/> stub service upon either the reception of some request message or
-	/// the invocation of some SOAP action.
+	/// to be carried out by the <see cref="IMessageService"/> or <see cref="ISolicitResponse"/> soap stub upon either the
+	/// reception of some request message or the invocation of some SOAP action.
 	/// </summary>
 	/// <typeparam name="TContract">
 	/// The the service contract to which belong operation that is being setup.
