@@ -148,7 +148,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 						System.ServiceModel.Channels.Message.CreateMessage(
 							MessageVersion.Soap11,
 							"urn:services.stateless.be:unit:work:request",
-							XmlReader.Create(new StringReader(MessageFactory.CreateMessage<btf2_services_header>().OuterXml)))))
+							XmlReader.Create(new StringReader(MessageBodyFactory.Create<btf2_services_header>().OuterXml)))))
 				.Should().Throw<CommunicationException>();
 			client.Abort();
 		}
@@ -226,7 +226,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 					System.ServiceModel.Channels.Message.CreateMessage(
 						MessageVersion.Soap11,
 						"urn:services.stateless.be:unit:work:request",
-						XmlReader.Create(new StringReader(MessageFactory.CreateMessage<btf2_services_header>().OuterXml))));
+						XmlReader.Create(new StringReader(MessageBodyFactory.Create<btf2_services_header>().OuterXml))));
 
 				var reader = response!.GetReaderAtBodyContents();
 				reader.MoveToContent();
