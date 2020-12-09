@@ -14,6 +14,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.BizTalk.Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.BizTalk.ServiceModel.Unit.Tests", "src\Be.Stateless.BizTalk.ServiceModel.Unit.Tests\Be.Stateless.BizTalk.ServiceModel.Unit.Tests.csproj", "{BEE98D2D-C0B4-4136-8C5B-C947DF05684F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.BizTalk.ServiceModel", "src\Be.Stateless.BizTalk.ServiceModel\Be.Stateless.BizTalk.ServiceModel.csproj", "{FC498AEE-CFD7-4366-BA80-594249030B2C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.BizTalk.ServiceModel.Tests.Dummies", "src\Be.Stateless.BizTalk.ServiceModel.Tests.Dummies\Be.Stateless.BizTalk.ServiceModel.Tests.Dummies.csproj", "{10347CE2-C774-43DA-BFD8-0113FD38DBF9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.BizTalk.ServiceModel.Tests.NUnit", "src\Be.Stateless.BizTalk.ServiceModel.Tests.NUnit\Be.Stateless.BizTalk.ServiceModel.Tests.NUnit.csproj", "{03010A01-7BDF-4745-BE2D-F5437D58D94B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.BizTalk.ServiceModel.Tests.XUnit", "src\Be.Stateless.BizTalk.ServiceModel.Tests.XUnit\Be.Stateless.BizTalk.ServiceModel.Tests.XUnit.csproj", "{952E2F5F-E76A-4E2A-BEE6-ADD7C3602458}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +40,22 @@ Global
 		{BEE98D2D-C0B4-4136-8C5B-C947DF05684F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEE98D2D-C0B4-4136-8C5B-C947DF05684F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEE98D2D-C0B4-4136-8C5B-C947DF05684F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC498AEE-CFD7-4366-BA80-594249030B2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC498AEE-CFD7-4366-BA80-594249030B2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC498AEE-CFD7-4366-BA80-594249030B2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC498AEE-CFD7-4366-BA80-594249030B2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10347CE2-C774-43DA-BFD8-0113FD38DBF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10347CE2-C774-43DA-BFD8-0113FD38DBF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10347CE2-C774-43DA-BFD8-0113FD38DBF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10347CE2-C774-43DA-BFD8-0113FD38DBF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03010A01-7BDF-4745-BE2D-F5437D58D94B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03010A01-7BDF-4745-BE2D-F5437D58D94B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03010A01-7BDF-4745-BE2D-F5437D58D94B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03010A01-7BDF-4745-BE2D-F5437D58D94B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{952E2F5F-E76A-4E2A-BEE6-ADD7C3602458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{952E2F5F-E76A-4E2A-BEE6-ADD7C3602458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{952E2F5F-E76A-4E2A-BEE6-ADD7C3602458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{952E2F5F-E76A-4E2A-BEE6-ADD7C3602458}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

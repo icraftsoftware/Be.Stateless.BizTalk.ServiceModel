@@ -22,7 +22,7 @@ using Be.Stateless.BizTalk.Dsl;
 namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 {
 	/// <summary>
-	/// Allows to setup an abort to be carried out by the <see cref="IStubService"/> stub service upon either the reception of
+	/// Allows to setup an abort to be carried out by the <see cref="IMessageService"/> soap stub upon either the reception of
 	/// some request message or the invocation of some SOAP action.
 	/// </summary>
 	/// <typeparam name="TContract">
@@ -33,7 +33,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 		where TContract : class
 	{
 		/// <summary>
-		/// Will setup the <see cref="IStubService"/> stub service to abort.
+		/// Will setup the <see cref="IMessageService"/> soap stub to abort.
 		/// </summary>
 		void Aborts();
 
@@ -41,7 +41,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 	}
 
 	/// <summary>
-	/// Allows to setup an abort to be carried out by the <see cref="IStubService"/> stub service upon either the reception of
+	/// Allows to setup an abort to be carried out by the <see cref="IMessageService"/> soap stub upon either the reception of
 	/// some request message or the invocation of some SOAP action.
 	/// </summary>
 	/// <typeparam name="TContract">

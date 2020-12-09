@@ -22,7 +22,7 @@ using Be.Stateless.BizTalk.Dsl;
 namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 {
 	/// <summary>
-	/// Allows to setup the callback to be carried out by the <see cref="IStubService"/> stub service upon either the reception
+	/// Allows to setup the callback to be carried out by the <see cref="IMessageService"/> soap stub upon either the reception
 	/// of some request message or the invocation of some SOAP action.
 	/// </summary>
 	/// <typeparam name="TContract">
@@ -44,7 +44,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 	}
 
 	/// <summary>
-	/// Allows to setup the callback to be carried out by the <see cref="IStubService"/> stub service upon either the reception
+	/// Allows to setup the callback to be carried out by the <see cref="IMessageService"/> soap stub upon either the reception
 	/// of some request message or the invocation of some SOAP action.
 	/// </summary>
 	/// <typeparam name="TContract">

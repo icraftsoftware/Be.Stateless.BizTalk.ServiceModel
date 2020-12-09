@@ -17,24 +17,26 @@
 #endregion
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using Be.Stateless.BizTalk.Dsl;
 
 namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 {
 	/// <summary>
-	/// Allows to clear all setups that has been performed against the <see cref="IStubService"/> stub service.
+	/// Allows to clear all setups that has been performed against the <see cref="IMessageService"/> soap stub.
 	/// </summary>
+	[SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Public API.")]
 	public interface ISetupOperation
 	{
 		/// <summary>
-		/// Clear all setups that has been performed so far against the <see cref="IStubService"/> stub service.
+		/// Clear all setups that has been performed so far against the <see cref="IMessageService"/> soap stub.
 		/// </summary>
 		void ClearSetups();
 	}
 
 	/// <summary>
-	/// Allows to setup what the <see cref="IStubService"/> stub service has to perform upon the invocation of some SOAP action,
+	/// Allows to setup what the <see cref="IMessageService"/> soap stub has to perform upon the invocation of some SOAP action,
 	/// that is a service contract's operation.
 	/// </summary>
 	/// <typeparam name="TContract">
@@ -44,7 +46,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 		where TContract : class { }
 
 	/// <summary>
-	/// Allows to setup what the <see cref="IStubService"/> stub service has to perform upon the invocation of some SOAP action,
+	/// Allows to setup what the <see cref="IMessageService"/> soap stub has to perform upon the invocation of some SOAP action,
 	/// that is a service contract's operation.
 	/// </summary>
 	/// <typeparam name="TContract">
@@ -54,7 +56,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 		where TContract : class
 	{
 		/// <summary>
-		/// Allows to setup what the <see cref="IStubService"/> stub service has to perform upon either the invocation of some
+		/// Allows to setup what the <see cref="IMessageService"/> soap stub has to perform upon either the invocation of some
 		/// SOAP action, that is service contract operation, that produces no result.
 		/// </summary>
 		/// <param name="operation">
@@ -68,7 +70,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 	}
 
 	/// <summary>
-	/// Allows to setup what the <see cref="IStubService"/> stub service has to perform upon the invocation of some SOAP action,
+	/// Allows to setup what the <see cref="IMessageService"/> soap stub has to perform upon the invocation of some SOAP action,
 	/// that is a service contract's operation.
 	/// </summary>
 	/// <typeparam name="TContract">
@@ -78,7 +80,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 		where TContract : class
 	{
 		/// <summary>
-		/// Allows to setup what the <see cref="IStubService"/> stub service has to perform upon either the invocation of some
+		/// Allows to setup what the <see cref="IMessageService"/> soap stub has to perform upon either the invocation of some
 		/// SOAP action, that is service contract operation, that produces a result of type <typeparamref name="TResult"/>.
 		/// </summary>
 		/// <typeparam name="TResult">

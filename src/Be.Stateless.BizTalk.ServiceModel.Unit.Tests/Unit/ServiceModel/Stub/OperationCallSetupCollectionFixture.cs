@@ -18,7 +18,7 @@
 
 using System.Collections.Generic;
 using System.IO;
-using Be.Stateless.BizTalk.Dummies;
+using Be.Stateless.BizTalk.Dummies.ServiceModel;
 using FluentAssertions;
 using Xunit;
 using static Be.Stateless.Unit.DelegateFactory;

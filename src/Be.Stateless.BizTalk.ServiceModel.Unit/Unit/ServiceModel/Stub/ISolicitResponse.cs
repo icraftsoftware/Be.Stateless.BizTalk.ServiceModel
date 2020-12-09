@@ -27,7 +27,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 	/// A scaffolding interface to support setting up response against <see cref="DocumentSpec"/> message type expectations. It
 	/// is not meant to be used in user code.
 	/// </summary>
-	/// <seealso cref="StubService"/>
+	/// <seealso cref="SoapStub"/>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public interface ISolicitResponse : IFluentInterface
 	{
