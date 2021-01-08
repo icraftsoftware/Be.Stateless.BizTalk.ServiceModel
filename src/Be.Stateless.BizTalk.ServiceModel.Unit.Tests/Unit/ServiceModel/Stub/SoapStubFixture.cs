@@ -25,6 +25,7 @@ using System.Xml;
 using Be.Stateless.BizTalk.Dummies.ServiceModel;
 using Be.Stateless.BizTalk.Message;
 using Be.Stateless.BizTalk.Schema;
+using Be.Stateless.BizTalk.Unit.ServiceModel.Channels;
 using Be.Stateless.BizTalk.Unit.ServiceModel.Extensions;
 using Be.Stateless.IO;
 using BTF2Schemas;

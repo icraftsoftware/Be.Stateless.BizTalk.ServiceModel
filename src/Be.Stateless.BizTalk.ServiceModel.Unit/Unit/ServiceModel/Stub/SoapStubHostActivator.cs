@@ -19,6 +19,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.ServiceModel;
+using Be.Stateless.BizTalk.Unit.ServiceModel.Channels;
 
 namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 {

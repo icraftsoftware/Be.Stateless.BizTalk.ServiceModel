@@ -38,15 +38,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Be.Stateless.BizTalk.Messaging" Version="2.0.20338.38034" />
-    <PackageReference Include="Be.Stateless.BizTalk.Xml" Version="2.0.20338.28952" />
-    <PackageReference Include="Be.Stateless.Common" Version="2.0.20338.28706" />
-    <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.4">
+    <PackageReference Include="Be.Stateless.BizTalk.Messaging" Version="2.0.21008.36224" />
+    <PackageReference Include="Be.Stateless.BizTalk.Xml" Version="2.0.21008.24393" />
+    <PackageReference Include="Be.Stateless.Common" Version="2.0.21005.39505" />
+    <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.1">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

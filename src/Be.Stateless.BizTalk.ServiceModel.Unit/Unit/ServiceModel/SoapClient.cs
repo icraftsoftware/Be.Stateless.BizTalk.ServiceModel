@@ -23,8 +23,8 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.Xml;
+using Be.Stateless.BizTalk.Unit.ServiceModel.Channels;
 using Be.Stateless.BizTalk.Unit.ServiceModel.Extensions;
-using Be.Stateless.BizTalk.Unit.ServiceModel.Stub;
 using Be.Stateless.Extensions;
 using Be.Stateless.IO;
 

@@ -21,6 +21,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.ServiceModel;
+using Be.Stateless.BizTalk.Unit.ServiceModel.Channels;
 using Be.Stateless.BizTalk.Unit.ServiceModel.Channels.Extensions;
 using Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language;
 using Be.Stateless.Extensions;

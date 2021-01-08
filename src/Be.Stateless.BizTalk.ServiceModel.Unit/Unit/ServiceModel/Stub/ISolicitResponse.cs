@@ -18,7 +18,6 @@
 
 using System.ComponentModel;
 using System.IO;
-using Be.Stateless.BizTalk.Dsl;
 using Microsoft.BizTalk.Component.Interop;
 
 namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub

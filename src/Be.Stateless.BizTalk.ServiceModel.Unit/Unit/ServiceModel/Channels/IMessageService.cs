@@ -18,8 +18,9 @@
 
 using System.ServiceModel;
 using System.ServiceModel.Channels;
+using Be.Stateless.BizTalk.Unit.ServiceModel.Stub;
 
-namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
+namespace Be.Stateless.BizTalk.Unit.ServiceModel.Channels
 {
 	/// <summary>
 	/// Defines a most-general contract that the <see cref="SoapStub"/> implements to be on the responding side of a
