@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <RootNamespace>Be.Stateless.BizTalk</RootNamespace>
-    <AssemblyTitle>Be.Stateless.BizTalk.ServiceModel.Tests.NUnit</AssemblyTitle>
+    <AssemblyName>Be.Stateless.BizTalk.ServiceModel.NUnit.Tests</AssemblyName>
     <Description>NUnit-based tests for BizTalk.Factory's WCF relay composition with BizTalk Server schema and transform artifacts for general purpose Biztalk Server development.</Description>
   </PropertyGroup>
 
@@ -31,7 +31,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Be.Stateless.BizTalk.ServiceModel.NUnit\Be.Stateless.BizTalk.ServiceModel.NUnit.csproj" />
-    <ProjectReference Include="..\Be.Stateless.BizTalk.ServiceModel.Tests.Dummies\Be.Stateless.BizTalk.ServiceModel.Tests.Dummies.csproj" />
+    <ProjectReference Include="..\Be.Stateless.BizTalk.ServiceModel.Test.Dummies\Be.Stateless.BizTalk.ServiceModel.Test.Dummies.csproj" />
   </ItemGroup>
 
   <ItemGroup>

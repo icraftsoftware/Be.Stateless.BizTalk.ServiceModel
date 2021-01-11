@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <RootNamespace>Be.Stateless.BizTalk</RootNamespace>
-    <AssemblyTitle>Be.Stateless.BizTalk.ServiceModel.Unit.Tests</AssemblyTitle>
+    <AssemblyName>Be.Stateless.BizTalk.ServiceModel.Unit.Tests</AssemblyName>
     <Description>Unit tests for BizTalk.Factory's WCF service model unit test library for general purpose Biztalk Server development.</Description>
   </PropertyGroup>
 
@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Be.Stateless.BizTalk.ServiceModel.Tests.Dummies\Be.Stateless.BizTalk.ServiceModel.Tests.Dummies.csproj" />
+    <ProjectReference Include="..\Be.Stateless.BizTalk.ServiceModel.Test.Dummies\Be.Stateless.BizTalk.ServiceModel.Test.Dummies.csproj" />
     <ProjectReference Include="..\Be.Stateless.BizTalk.ServiceModel.Unit\Be.Stateless.BizTalk.ServiceModel.Unit.csproj" />
   </ItemGroup>
 
