@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -33,16 +33,28 @@ using FluentAssertions;
 using Microsoft.BizTalk.Component.Interop;
 using Moq;
 using Xunit;
-using static Be.Stateless.Unit.DelegateFactory;
+using static FluentAssertions.FluentActions;
 
 namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 {
 	public class SoapStubFixture : IClassFixture<SoapStubHostActivator>
 	{
+		#region Setup/Teardown
+
+		[SuppressMessage("ReSharper", "SuggestBaseTypeForParameter", Justification = "Necessary for typed xUnit injection.")]
+		public SoapStubFixture(SoapStubHostActivator soapStubHostActivator)
+		{
+			_soapStubHost = soapStubHostActivator.Host;
+			_soapStub = (SoapStub) _soapStubHost.SingletonInstance;
+			_soapStub.ClearSetups();
+		}
+
+		#endregion
+
 		[Fact]
 		public void CannotSetupExpectationAgainstNonServiceContract()
 		{
-			Action(() => _soapStub.As<IDisposable>().Setup(s => s.Dispose()).Aborts())
+			Invoking(() => _soapStub.As<IDisposable>().Setup(s => s.Dispose()).Aborts())
 				.Should().Throw<ArgumentException>()
 				.WithMessage("TContract type parameter 'IDisposable' is not a service contract.");
 		}
@@ -56,7 +68,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 				.Callback(() => calledBack = true);
 
 			var client = SoapClient<IWork>.For(_soapStubHost.Endpoint);
-			Action(
+			Invoking(
 				() => client.Execute(
 					System.ServiceModel.Channels.Message.CreateMessage(
 						MessageVersion.Soap11,
@@ -67,7 +79,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 		}
 
 		[Fact]
-		public void SetupConsecutiveResponseExpectationsAgainstAction()
+		public void SetupConsecutiveResponseExpectationsAgainstInvoking()
 		{
 			_soapStub.As<IWork>()
 				.Setup(s => s.Perform(It.IsAny<System.ServiceModel.Channels.Message>()))
@@ -113,14 +125,14 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 		}
 
 		[Fact]
-		public void SetupFailureExpectationAgainstAction()
+		public void SetupFailureExpectationAgainstInvoking()
 		{
 			_soapStub.As<IWork>()
 				.Setup(s => s.Perform(It.IsAny<System.ServiceModel.Channels.Message>()))
 				.Aborts();
 
 			var client = SoapClient<IWork>.For(_soapStubHost.Endpoint);
-			Action(
+			Invoking(
 					() => client.Perform(
 						System.ServiceModel.Channels.Message.CreateMessage(
 							MessageVersion.Soap11,
@@ -138,7 +150,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 				.Aborts();
 
 			var client = SoapClient<IMessageService>.For(_soapStubHost.Endpoint);
-			Action(
+			Invoking(
 					() => client.Invoke(
 						System.ServiceModel.Channels.Message.CreateMessage(
 							MessageVersion.Soap11,
@@ -156,7 +168,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 				.Aborts();
 
 			var client = SoapClient<IWork>.For(_soapStubHost.Endpoint);
-			Action(
+			Invoking(
 					() => client.Execute(
 						System.ServiceModel.Channels.Message.CreateMessage(
 							MessageVersion.Soap11,
@@ -167,7 +179,18 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 		}
 
 		[Fact]
-		public void SetupResponseExpectationAgainstAction()
+		public void SetupResponseExpectationAgainstAnyMessageType()
+		{
+			Invoking(
+					() => _soapStub.As<ISolicitResponse>()
+						.Setup(s => s.Request(It.IsAny<DocumentSpec>()))
+						.Returns(new StringStream("<response />")))
+				.Should().Throw<ArgumentException>()
+				.WithMessage("Can only setup a response for a valid and non-null DocumentSpec.");
+		}
+
+		[Fact]
+		public void SetupResponseExpectationAgainstInvoking()
 		{
 			_soapStub.As<IWork>()
 				.Setup(s => s.Perform(It.IsAny<System.ServiceModel.Channels.Message>()))
@@ -194,17 +217,6 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 				client.Abort();
 				throw;
 			}
-		}
-
-		[Fact]
-		public void SetupResponseExpectationAgainstAnyMessageType()
-		{
-			Action(
-					() => _soapStub.As<ISolicitResponse>()
-						.Setup(s => s.Request(It.IsAny<DocumentSpec>()))
-						.Returns(new StringStream("<response />")))
-				.Should().Throw<ArgumentException>()
-				.WithMessage("Can only setup a response for a valid and non-null DocumentSpec.");
 		}
 
 		[Fact]
@@ -235,14 +247,6 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 				client.Abort();
 				throw;
 			}
-		}
-
-		[SuppressMessage("ReSharper", "SuggestBaseTypeForParameter", Justification = "Necessary for typed xUnit injection.")]
-		public SoapStubFixture(SoapStubHostActivator soapStubHostActivator)
-		{
-			_soapStubHost = soapStubHostActivator.Host;
-			_soapStub = (SoapStub) _soapStubHost.SingletonInstance;
-			_soapStub.ClearSetups();
 		}
 
 		private readonly SoapStub _soapStub;

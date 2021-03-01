@@ -11,7 +11,6 @@ resources:
 extends:
   template: Pipelines/net/continuous-integration.yml@pipelineTemplateRepository
   parameters:
-    ProjectOrSolutionPath: "$(Build.SourcesDirectory)/Be.Stateless.BizTalk.ServiceModel.sln"
     Major: 2
     Minor: 0
     TestEngine: vstest

@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ using System.Xml.Schema;
 using Be.Stateless.BizTalk.Dummies.Xml.Schema;
 using FluentAssertions;
 using Xunit;
-using static Be.Stateless.Unit.DelegateFactory;
+using static FluentAssertions.FluentActions;
 
 namespace Be.Stateless.BizTalk.ServiceModel.Channels
 {
@@ -36,7 +36,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Channels
 			using (var xmlReader = GetXmlReader(INVALID_LAX_ARGUMENTS_XML))
 			{
 				var arguments = new XLangMessage<CalculatorSchema.LaxArguments>(XmlSchemaContentProcessing.Lax);
-				Action(() => arguments.ReadXml(xmlReader)).Should().Throw<XmlSchemaValidationException>();
+				Invoking(() => arguments.ReadXml(xmlReader)).Should().Throw<XmlSchemaValidationException>();
 			}
 		}
 
@@ -46,17 +46,17 @@ namespace Be.Stateless.BizTalk.ServiceModel.Channels
 			using (var xmlReader = GetXmlReader(UNKNOWN_ARGUMENTS_XML))
 			{
 				var arguments = new XLangMessage<CalculatorSchema.LaxArguments>(XmlSchemaContentProcessing.Lax);
-				Action(() => arguments.ReadXml(xmlReader)).Should().NotThrow();
+				Invoking(() => arguments.ReadXml(xmlReader)).Should().NotThrow();
 			}
 			using (var xmlReader = GetXmlReader(LAX_ARGUMENTS_XML))
 			{
 				var arguments = new XLangMessage<CalculatorSchema.LaxArguments>(XmlSchemaContentProcessing.Lax);
-				Action(() => arguments.ReadXml(xmlReader)).Should().NotThrow();
+				Invoking(() => arguments.ReadXml(xmlReader)).Should().NotThrow();
 			}
 			using (var xmlReader = GetXmlReader(CALCULATOR_REQUEST_XML))
 			{
 				var arguments = new XLangMessage<CalculatorSchema.LaxArguments>(XmlSchemaContentProcessing.Lax);
-				Action(() => arguments.ReadXml(xmlReader)).Should().NotThrow();
+				Invoking(() => arguments.ReadXml(xmlReader)).Should().NotThrow();
 			}
 		}
 
@@ -66,12 +66,12 @@ namespace Be.Stateless.BizTalk.ServiceModel.Channels
 			using (var xmlReader = GetXmlReader(INVALID_LAX_ARGUMENTS_XML))
 			{
 				var arguments = new XLangMessage<CalculatorSchema.LaxArguments>(XmlSchemaContentProcessing.Strict);
-				Action(() => arguments.ReadXml(xmlReader)).Should().Throw<XmlSchemaValidationException>();
+				Invoking(() => arguments.ReadXml(xmlReader)).Should().Throw<XmlSchemaValidationException>();
 			}
 			using (var xmlReader = GetXmlReader(UNKNOWN_ARGUMENTS_XML))
 			{
 				var arguments = new XLangMessage<CalculatorSchema.LaxArguments>(XmlSchemaContentProcessing.Strict);
-				Action(() => arguments.ReadXml(xmlReader)).Should().Throw<XmlSchemaValidationException>();
+				Invoking(() => arguments.ReadXml(xmlReader)).Should().Throw<XmlSchemaValidationException>();
 			}
 		}
 
@@ -81,12 +81,12 @@ namespace Be.Stateless.BizTalk.ServiceModel.Channels
 			using (var xmlReader = GetXmlReader(LAX_ARGUMENTS_XML))
 			{
 				var arguments = new XLangMessage<CalculatorSchema.LaxArguments>(XmlSchemaContentProcessing.Strict);
-				Action(() => arguments.ReadXml(xmlReader)).Should().NotThrow();
+				Invoking(() => arguments.ReadXml(xmlReader)).Should().NotThrow();
 			}
 			using (var xmlReader = GetXmlReader(CALCULATOR_REQUEST_XML))
 			{
 				var arguments = new XLangMessage<CalculatorSchema.LaxArguments>(XmlSchemaContentProcessing.Strict);
-				Action(() => arguments.ReadXml(xmlReader)).Should().NotThrow();
+				Invoking(() => arguments.ReadXml(xmlReader)).Should().NotThrow();
 			}
 		}
 

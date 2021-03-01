@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <RootNamespace>Be.Stateless.BizTalk</RootNamespace>
-    <AssemblyName>Be.Stateless.BizTalk.ServiceModel.Test.Dummies</AssemblyName>
+    <AssemblyName>Be.Stateless.BizTalk.ServiceModel.Dummies</AssemblyName>
     <Description>Unit test dummiess for BizTalk.Factory's WCF relay composition with BizTalk Server schema and transform artifacts for general purpose Biztalk Server development.</Description>
   </PropertyGroup>
 

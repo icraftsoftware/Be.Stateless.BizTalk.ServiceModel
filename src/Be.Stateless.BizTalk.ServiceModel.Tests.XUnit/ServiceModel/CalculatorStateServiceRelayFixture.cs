@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,12 +28,24 @@ using Be.Stateless.BizTalk.Unit.ServiceModel.Stub;
 using FluentAssertions;
 using Moq;
 using Xunit;
-using static Be.Stateless.Unit.DelegateFactory;
+using static FluentAssertions.FluentActions;
 
 namespace Be.Stateless.BizTalk.ServiceModel
 {
 	public class CalculatorStateServiceRelayFixture : IClassFixture<CalculatorStateServiceHostActivator>, IClassFixture<SoapStubHostActivator>
 	{
+		#region Setup/Teardown
+
+		[SuppressMessage("ReSharper", "SuggestBaseTypeForParameter", Justification = "Necessary for typed xUnit injection.")]
+		public CalculatorStateServiceRelayFixture(CalculatorStateServiceHostActivator calculatorServiceHostActivator, SoapStubHostActivator soapStubHostActivator)
+		{
+			_calculatorServiceHost = calculatorServiceHostActivator.Host;
+			_soapStub = (SoapStub) soapStubHostActivator.Host.SingletonInstance;
+			_soapStub.ClearSetups();
+		}
+
+		#endregion
+
 		[Fact(Skip = "Need to fix relay for void method")]
 		public void CleanAsyncFails()
 		{
@@ -42,7 +54,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 				.Callback(() => throw new InvalidOperationException("Cannot process this request."));
 
 			var client = SoapClient<ICalculatorStateServiceSync>.For(_calculatorServiceHost.Endpoint);
-			Action(() => client.Clean(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML)))
+			Invoking(() => client.Clean(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML)))
 				.Should().Throw<FaultException<ExceptionDetail>>()
 				.WithMessage("Cannot process this request.");
 			client.Abort();
@@ -55,7 +67,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 				.Setup(s => s.Clean(It.IsAny<XLangCalculatorRequest>()));
 
 			var client = SoapClient<ICalculatorStateServiceSync>.For(_calculatorServiceHost.Endpoint);
-			Action(() => client.Clean(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML))).Should().NotThrow();
+			Invoking(() => client.Clean(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML))).Should().NotThrow();
 			client.Close();
 		}
 
@@ -85,7 +97,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 				.Callback(() => throw new InvalidOperationException("Cannot process this request."));
 
 			var client = SoapClient<ICalculatorStateService>.For(_calculatorServiceHost.Endpoint);
-			Action(() => client.Reset(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML)))
+			Invoking(() => client.Reset(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML)))
 				.Should().Throw<FaultException<ExceptionDetail>>()
 				.WithMessage("Cannot process this request.");
 			client.Abort();
@@ -98,16 +110,8 @@ namespace Be.Stateless.BizTalk.ServiceModel
 				.Setup(s => s.Reset(It.IsAny<XLangCalculatorRequest>()));
 
 			var client = SoapClient<ICalculatorStateService>.For(_calculatorServiceHost.Endpoint);
-			Action(() => client.Reset(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML))).Should().NotThrow();
+			Invoking(() => client.Reset(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML))).Should().NotThrow();
 			client.Close();
-		}
-
-		[SuppressMessage("ReSharper", "SuggestBaseTypeForParameter", Justification = "Necessary for typed xUnit injection.")]
-		public CalculatorStateServiceRelayFixture(CalculatorStateServiceHostActivator calculatorServiceHostActivator, SoapStubHostActivator soapStubHostActivator)
-		{
-			_calculatorServiceHost = calculatorServiceHostActivator.Host;
-			_soapStub = (SoapStub) soapStubHostActivator.Host.SingletonInstance;
-			_soapStub.ClearSetups();
 		}
 
 		private readonly SoapServiceHost _calculatorServiceHost;

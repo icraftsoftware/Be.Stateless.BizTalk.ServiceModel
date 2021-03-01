@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ using System.IO;
 using Be.Stateless.BizTalk.Dummies.ServiceModel;
 using FluentAssertions;
 using Xunit;
-using static Be.Stateless.Unit.DelegateFactory;
+using static FluentAssertions.FluentActions;
 
 namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 {
@@ -44,7 +44,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 		[Fact]
 		public void NoSetupHasBeenPerformed()
 		{
-			Function(() => new OperationCallSetupCollection()["message", "action"])
+			Invoking(() => new OperationCallSetupCollection()["message", "action"])
 				.Should().Throw<KeyNotFoundException>()
 				.WithMessage("No operation setup has been performed for neither the message type 'message' nor the SOAP action 'action'.");
 		}

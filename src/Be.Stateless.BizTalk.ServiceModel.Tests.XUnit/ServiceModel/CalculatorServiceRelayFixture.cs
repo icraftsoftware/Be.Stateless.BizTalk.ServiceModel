@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -31,12 +31,24 @@ using Be.Stateless.IO;
 using FluentAssertions;
 using Moq;
 using Xunit;
-using static Be.Stateless.Unit.DelegateFactory;
+using static FluentAssertions.FluentActions;
 
 namespace Be.Stateless.BizTalk.ServiceModel
 {
 	public class CalculatorServiceRelayFixture : IClassFixture<CalculatorServiceHostActivator>, IClassFixture<SoapStubHostActivator>
 	{
+		#region Setup/Teardown
+
+		[SuppressMessage("ReSharper", "SuggestBaseTypeForParameter", Justification = "Necessary for typed xUnit injection.")]
+		public CalculatorServiceRelayFixture(CalculatorServiceHostActivator calculatorServiceHostActivator, SoapStubHostActivator soapStubHostActivator)
+		{
+			_calculatorServiceHost = calculatorServiceHostActivator.Host;
+			_soapStub = (SoapStub) soapStubHostActivator.Host.SingletonInstance;
+			_soapStub.ClearSetups();
+		}
+
+		#endregion
+
 		[Fact]
 		public void GetMetadata()
 		{
@@ -87,7 +99,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 				.Callback(() => Thread.Sleep(3000))
 				.Returns(new StringStream(string.Format(CALCULATOR_RESPONSE_XML, 2)));
 			var client = SoapClient<ICalculatorService>.For(_calculatorServiceHost.Endpoint);
-			Function(
+			Invoking(
 					() => Task<XmlCalculatorResponse>.Factory
 						.FromAsync(client.BeginDivide, client.EndDivide, new XmlCalculatorRequest(CALCULATOR_REQUEST_XML), null)
 						.Result)
@@ -155,18 +167,10 @@ namespace Be.Stateless.BizTalk.ServiceModel
 				.Returns(new StringStream(string.Format(CALCULATOR_RESPONSE_XML, 1)));
 
 			var client = SoapClient<ICalculatorService>.For(_calculatorServiceHost.Endpoint);
-			Action(() => client.Subtract(new XmlCalculatorRequest(CALCULATOR_REQUEST_XML)))
+			Invoking(() => client.Subtract(new XmlCalculatorRequest(CALCULATOR_REQUEST_XML)))
 				.Should().Throw<FaultException<ExceptionDetail>>()
 				.WithMessage("The request channel timed out while waiting for a reply*");
 			client.Close();
-		}
-
-		[SuppressMessage("ReSharper", "SuggestBaseTypeForParameter", Justification = "Necessary for typed xUnit injection.")]
-		public CalculatorServiceRelayFixture(CalculatorServiceHostActivator calculatorServiceHostActivator, SoapStubHostActivator soapStubHostActivator)
-		{
-			_calculatorServiceHost = calculatorServiceHostActivator.Host;
-			_soapStub = (SoapStub) soapStubHostActivator.Host.SingletonInstance;
-			_soapStub.ClearSetups();
 		}
 
 		private readonly SoapServiceHost _calculatorServiceHost;

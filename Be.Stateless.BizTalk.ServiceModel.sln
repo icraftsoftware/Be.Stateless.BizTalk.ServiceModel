@@ -16,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.BizTalk.Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.BizTalk.ServiceModel", "src\Be.Stateless.BizTalk.ServiceModel\Be.Stateless.BizTalk.ServiceModel.csproj", "{FC498AEE-CFD7-4366-BA80-594249030B2C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.BizTalk.ServiceModel.Test.Dummies", "src\Be.Stateless.BizTalk.ServiceModel.Test.Dummies\Be.Stateless.BizTalk.ServiceModel.Test.Dummies.csproj", "{10347CE2-C774-43DA-BFD8-0113FD38DBF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.BizTalk.ServiceModel.Dummies", "src\Be.Stateless.BizTalk.ServiceModel.Dummies\Be.Stateless.BizTalk.ServiceModel.Dummies.csproj", "{10347CE2-C774-43DA-BFD8-0113FD38DBF9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.BizTalk.ServiceModel.Tests.NUnit", "src\Be.Stateless.BizTalk.ServiceModel.Tests.NUnit\Be.Stateless.BizTalk.ServiceModel.Tests.NUnit.csproj", "{03010A01-7BDF-4745-BE2D-F5437D58D94B}"
 EndProject

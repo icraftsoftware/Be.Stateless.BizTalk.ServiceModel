@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -30,12 +30,24 @@ using Be.Stateless.IO;
 using FluentAssertions;
 using Moq;
 using Xunit;
-using static Be.Stateless.Unit.DelegateFactory;
+using static FluentAssertions.FluentActions;
 
 namespace Be.Stateless.BizTalk.ServiceModel
 {
 	public class ValidatingCalculatorServiceRelayFixture : IClassFixture<ValidatingCalculatorServiceHostActivator>, IClassFixture<SoapStubHostActivator>
 	{
+		#region Setup/Teardown
+
+		[SuppressMessage("ReSharper", "SuggestBaseTypeForParameter", Justification = "Necessary for typed xUnit injection.")]
+		public ValidatingCalculatorServiceRelayFixture(ValidatingCalculatorServiceHostActivator calculatorServiceHostActivator, SoapStubHostActivator soapStubHostActivator)
+		{
+			_calculatorServiceHost = calculatorServiceHostActivator.Host;
+			_soapStub = (SoapStub) soapStubHostActivator.Host.SingletonInstance;
+			_soapStub.ClearSetups();
+		}
+
+		#endregion
+
 		[Fact]
 		public void GetMetadata()
 		{
@@ -59,7 +71,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 		{
 			var client = SoapClient<IValidatingCalculatorService>.For(_calculatorServiceHost.Endpoint);
 
-			Function(
+			Invoking(
 					() => Task<XLangCalculatorResponse>.Factory
 						.FromAsync(client.BeginMultiply, client.EndMultiply, new XLangCalculatorRequest(INVALID_CALCULATOR_REQUEST_XML), null)
 						.Result)
@@ -103,7 +115,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 		public void RelaySyncInvalidMessageFails()
 		{
 			var client = SoapClient<IValidatingCalculatorService>.For(_calculatorServiceHost.Endpoint);
-			Action(() => client.Add(new XLangCalculatorRequest(INVALID_CALCULATOR_REQUEST_XML)))
+			Invoking(() => client.Add(new XLangCalculatorRequest(INVALID_CALCULATOR_REQUEST_XML)))
 				.Should().Throw<FaultException<ExceptionDetail>>()
 				.Which.Detail.InnerException.InnerException.Message.Should().Contain(
 					"The element 'Arguments' in namespace 'urn:services.stateless.be:unit:calculator' has invalid child element 'Operand' in namespace 'urn:services.stateless.be:unit:calculator'. "
@@ -131,14 +143,6 @@ namespace Be.Stateless.BizTalk.ServiceModel
 				client?.Abort();
 				throw;
 			}
-		}
-
-		[SuppressMessage("ReSharper", "SuggestBaseTypeForParameter", Justification = "Necessary for typed xUnit injection.")]
-		public ValidatingCalculatorServiceRelayFixture(ValidatingCalculatorServiceHostActivator calculatorServiceHostActivator, SoapStubHostActivator soapStubHostActivator)
-		{
-			_calculatorServiceHost = calculatorServiceHostActivator.Host;
-			_soapStub = (SoapStub) soapStubHostActivator.Host.SingletonInstance;
-			_soapStub.ClearSetups();
 		}
 
 		private readonly SoapServiceHost _calculatorServiceHost;
