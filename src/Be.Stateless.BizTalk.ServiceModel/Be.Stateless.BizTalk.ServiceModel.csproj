@@ -38,7 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Be.Stateless.BizTalk.Messaging" Version="2.0.21077.61705" />
+    <PackageReference Include="Be.Stateless.BizTalk.Messaging" Version="2.0.21084.29081" />
     <PackageReference Include="Be.Stateless.BizTalk.Xml" Version="2.0.21071.53936" />
     <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
