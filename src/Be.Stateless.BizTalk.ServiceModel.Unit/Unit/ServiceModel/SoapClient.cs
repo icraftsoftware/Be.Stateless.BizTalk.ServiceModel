@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -32,11 +32,13 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 {
 	public static class SoapClient
 	{
+		[SuppressMessage("ReSharper", "UnusedMember.Global")]
 		public static Stream Invoke(string address, Stream requestMessageBodyStream)
 		{
 			return Invoke(address, DEFAULT_ACTION, requestMessageBodyStream);
 		}
 
+		[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
 		public static Stream Invoke(string address, string action, Stream requestMessageBodyStream)
 		{
 			return Invoke(new EndpointAddress(address), action, requestMessageBodyStream);
@@ -53,12 +55,14 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 			return Invoke(endpoint.Address, action, requestMessageBodyStream);
 		}
 
+		[SuppressMessage("ReSharper", "UnusedMember.Global")]
 		public static Stream Invoke(EndpointAddress address, Stream requestMessageBodyStream)
 		{
 			return Invoke(address, DEFAULT_ACTION, requestMessageBodyStream);
 		}
 
 		[SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
+		[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
 		public static Stream Invoke(EndpointAddress address, string action, Stream requestMessageBodyStream)
 		{
 			var client = _channelFactory.CreateChannel(address);
@@ -82,6 +86,6 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 		}
 
 		private const string DEFAULT_ACTION = "urn:services.stateless.be:unit:soap-client:invoke";
-		private static readonly ChannelFactory<IMessageService> _channelFactory = new ChannelFactory<IMessageService>(new BasicHttpBinding());
+		private static readonly ChannelFactory<IMessageService> _channelFactory = new(new BasicHttpBinding());
 	}
 }

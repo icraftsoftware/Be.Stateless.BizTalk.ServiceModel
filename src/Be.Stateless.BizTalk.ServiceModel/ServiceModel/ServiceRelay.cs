@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -166,7 +166,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 			where TRequest : XmlMessage
 			where TResponse : XmlMessage, new()
 		{
-			return RelayRequest<TRequest, TResponse>(request, relay => timeout, DefaultConverter.Instance);
+			return RelayRequest<TRequest, TResponse>(request, _ => timeout, DefaultConverter.Instance);
 		}
 
 		/// <summary>
@@ -207,7 +207,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 			where TRequest : XmlMessage
 			where TResponse : XmlMessage, new()
 		{
-			return RelayRequest<TRequest, TResponse>(request, relay => timeout, converter);
+			return RelayRequest<TRequest, TResponse>(request, _ => timeout, converter);
 		}
 
 		private TResponse RelayRequest<TRequest, TResponse>(TRequest request, Func<ClientRelay, TimeSpan> getTimeout, IXmlMessageConverter converter)
@@ -327,7 +327,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 		protected IAsyncResult BeginRelayRequest<TRequest>(TRequest request, TimeSpan timeout, AsyncCallback asyncCallback, object asyncState)
 			where TRequest : XmlMessage
 		{
-			return BeginRelayRequest(request, relay => timeout, DefaultConverter.Instance, asyncCallback, asyncState);
+			return BeginRelayRequest(request, _ => timeout, DefaultConverter.Instance, asyncCallback, asyncState);
 		}
 
 		/// <summary>
@@ -372,7 +372,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 		protected IAsyncResult BeginRelayRequest<TRequest>(TRequest request, TimeSpan timeout, IXmlMessageConverter converter, AsyncCallback asyncCallback, object asyncState)
 			where TRequest : XmlMessage
 		{
-			return BeginRelayRequest(request, relay => timeout, converter, asyncCallback, asyncState);
+			return BeginRelayRequest(request, _ => timeout, converter, asyncCallback, asyncState);
 		}
 
 		private IAsyncResult BeginRelayRequest<TRequest>(

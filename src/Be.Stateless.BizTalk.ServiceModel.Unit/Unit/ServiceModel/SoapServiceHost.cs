@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -64,20 +64,20 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 		where TService : TChannel, new()
 		where TChannel : class
 	{
-		private static bool IsSingleton => typeof(TService).GetCustomAttribute(typeof(ServiceBehaviorAttribute)) is ServiceBehaviorAttribute sba
-			&& sba.InstanceContextMode == InstanceContextMode.Single;
+		private static bool IsSingleton => typeof(TService).GetCustomAttribute(typeof(ServiceBehaviorAttribute)) is ServiceBehaviorAttribute
+			{ InstanceContextMode: InstanceContextMode.Single };
 
 		#region Base Class Member Overrides
 
 		public override Type ChannelType => typeof(TChannel);
 
-		public override ServiceEndpoint Endpoint => Description.Endpoints.Find(typeof(TChannel));
+		public override ServiceEndpoint Endpoint => Description!.Endpoints.Find(typeof(TChannel));
 
 		protected internal override void Initialize(Uri address)
 		{
 			if (IsSingleton) InitializeDescription(new TService(), new UriSchemeKeyedCollection(address));
 			else InitializeDescription(typeof(TService), new UriSchemeKeyedCollection(address));
-			var debugBehavior = Description.Behaviors.Find<ServiceDebugBehavior>();
+			var debugBehavior = Description!.Behaviors.Find<ServiceDebugBehavior>();
 			if (debugBehavior != null) debugBehavior.IncludeExceptionDetailInFaults = true;
 			else Description.Behaviors.Add(new ServiceDebugBehavior { IncludeExceptionDetailInFaults = true });
 			AddMexEndpoint(address.Scheme);
@@ -92,7 +92,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 		private void AddMexEndpoint(string scheme)
 		{
 			if (scheme == null) throw new ArgumentNullException(nameof(scheme));
-			var debugBehavior = Description.Behaviors.Find<ServiceDebugBehavior>();
+			var debugBehavior = Description!.Behaviors.Find<ServiceDebugBehavior>();
 			var metaDataBehavior = Description.Behaviors.Find<ServiceMetadataBehavior>();
 			if (metaDataBehavior == null)
 			{
