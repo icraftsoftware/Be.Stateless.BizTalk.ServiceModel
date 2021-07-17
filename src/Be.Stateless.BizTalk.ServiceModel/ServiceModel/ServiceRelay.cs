@@ -419,7 +419,6 @@ namespace Be.Stateless.BizTalk.ServiceModel
 		/// <returns>
 		/// The <see cref="XmlMessage"/>-based response.
 		/// </returns>
-		[SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Async API.")]
 		protected TResponse EndRelayRequest<TResponse>(IAsyncResult asyncResult)
 			where TResponse : XmlMessage, new()
 		{

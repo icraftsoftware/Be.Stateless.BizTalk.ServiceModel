@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 #endregion
 
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using Be.Stateless.BizTalk.Unit.ServiceModel.Channels;
 
 namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
@@ -25,7 +24,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 	/// <summary>
 	/// Allows to setup the response that has to be returned by the <see cref="IMessageService"/> or <see
 	/// cref="ISolicitResponse"/> soap stub upon either the reception of some request message or the invocation of some SOAP
-   /// action.
+	/// action.
 	/// </summary>
 	/// <typeparam name="TContract">
 	/// The the service contract to which belong operation that is being setup.
@@ -51,6 +50,6 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 		/// <param name="stream">
 		/// The stream to be used as the response's body stream.
 		/// </param>
-		void Returns(Stream stream);
+		void Returns(System.IO.Stream stream);
 	}
 }

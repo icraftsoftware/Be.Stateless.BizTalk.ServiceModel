@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 		[SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "Public API.")]
 		public bool MustAbort { get; protected set; }
 
-		public Stream Stream { get; protected set; }
+		public System.IO.Stream Stream { get; protected set; }
 	}
 
 	internal class OperationCallSetup<TContract> : OperationCallSetup, IOperationCallSetup<TContract>
@@ -89,7 +89,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 			Stream = new MemoryStream(File.ReadAllBytes(file));
 		}
 
-		public void Returns(Stream stream)
+		public void Returns(System.IO.Stream stream)
 		{
 			if (stream == null) throw new ArgumentNullException(nameof(stream));
 			if (!stream.CanSeek) throw new ArgumentException("Stream is not seekable.", nameof(stream));

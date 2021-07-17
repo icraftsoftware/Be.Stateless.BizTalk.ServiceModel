@@ -81,7 +81,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 				if (typeof(TContract) == typeof(ISolicitResponse))
 				{
 					var argument = callExpression.Arguments[0];
-					if (!(Expression.Lambda(argument).Compile().DynamicInvoke() is DocumentSpec documentSpec))
+					if (Expression.Lambda(argument).Compile().DynamicInvoke() is not DocumentSpec documentSpec)
 						throw new ArgumentException("Can only setup a response for a valid and non-null DocumentSpec.");
 					return (IOperationCallSetup<TContract, TResult>) _operationCallSetupCollection.Add<ISolicitResponse, TResult>(documentSpec.DocType);
 				}

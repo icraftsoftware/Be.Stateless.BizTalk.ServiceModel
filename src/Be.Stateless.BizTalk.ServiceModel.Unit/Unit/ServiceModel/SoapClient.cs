@@ -18,7 +18,6 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
@@ -33,43 +32,43 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 	public static class SoapClient
 	{
 		[SuppressMessage("ReSharper", "UnusedMember.Global")]
-		public static Stream Invoke(string address, Stream requestMessageBodyStream)
+		public static System.IO.Stream Invoke(string address, System.IO.Stream requestMessageBodyStream)
 		{
 			return Invoke(address, DEFAULT_ACTION, requestMessageBodyStream);
 		}
 
 		[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-		public static Stream Invoke(string address, string action, Stream requestMessageBodyStream)
+		public static System.IO.Stream Invoke(string address, string action, System.IO.Stream requestMessageBodyStream)
 		{
 			return Invoke(new EndpointAddress(address), action, requestMessageBodyStream);
 		}
 
-		public static Stream Invoke(ServiceEndpoint endpoint, Stream requestMessageBodyStream)
+		public static System.IO.Stream Invoke(ServiceEndpoint endpoint, System.IO.Stream requestMessageBodyStream)
 		{
 			return Invoke(endpoint, DEFAULT_ACTION, requestMessageBodyStream);
 		}
 
-		public static Stream Invoke(ServiceEndpoint endpoint, string action, Stream requestMessageBodyStream)
+		public static System.IO.Stream Invoke(ServiceEndpoint endpoint, string action, System.IO.Stream requestMessageBodyStream)
 		{
 			if (endpoint == null) throw new ArgumentNullException(nameof(endpoint));
 			return Invoke(endpoint.Address, action, requestMessageBodyStream);
 		}
 
 		[SuppressMessage("ReSharper", "UnusedMember.Global")]
-		public static Stream Invoke(EndpointAddress address, Stream requestMessageBodyStream)
+		public static System.IO.Stream Invoke(EndpointAddress address, System.IO.Stream requestMessageBodyStream)
 		{
 			return Invoke(address, DEFAULT_ACTION, requestMessageBodyStream);
 		}
 
 		[SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
 		[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-		public static Stream Invoke(EndpointAddress address, string action, Stream requestMessageBodyStream)
+		public static System.IO.Stream Invoke(EndpointAddress address, string action, System.IO.Stream requestMessageBodyStream)
 		{
 			var client = _channelFactory.CreateChannel(address);
 			try
 			{
 				using (var xmlReader = XmlReader.Create(requestMessageBodyStream))
-				using (var requestMessage = Message.CreateMessage(MessageVersion.Soap11, action, xmlReader))
+				using (var requestMessage = System.ServiceModel.Channels.Message.CreateMessage(MessageVersion.Soap11, action, xmlReader))
 				using (var responseMessage = client!.Invoke(requestMessage))
 				{
 					var responseBody = new StringStream(responseMessage.GetReaderAtBodyContents().ReadOuterXml());
@@ -77,9 +76,8 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 					return responseBody;
 				}
 			}
-			catch (Exception exception)
+			catch (Exception exception) when (!exception.IsFatal())
 			{
-				if (exception.IsFatal()) throw;
 				if (client is ICommunicationObject communicationObject && communicationObject.State != CommunicationState.Closed) communicationObject.Abort();
 				throw;
 			}

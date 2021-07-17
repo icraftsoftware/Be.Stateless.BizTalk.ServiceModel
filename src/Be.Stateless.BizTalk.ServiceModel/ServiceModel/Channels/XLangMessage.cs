@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -57,12 +57,9 @@ namespace Be.Stateless.BizTalk.ServiceModel.Channels
 	{
 		#region Nested Type: XLangSchemaBaseSchemaProvider
 
-		#region Nested type: XLangSchemaBaseSchemaProvider
-
 		/// <summary>
 		/// Adapter class that provides <see cref="IXmlSchemaProvider"/> support to <see cref="SchemaBase"/>-derived classes.
 		/// </summary>
-		[SuppressMessage("Design", "CA1034:Nested types should not be visible")]
 		public class XLangSchemaBaseSchemaProvider : IXmlSchemaProvider
 		{
 			#region IXmlSchemaProvider Members
@@ -100,9 +97,6 @@ namespace Be.Stateless.BizTalk.ServiceModel.Channels
 
 		#endregion
 
-		#endregion
-
-		[SuppressMessage("Design", "CA1000:Do not declare static members on generic types", Justification = "XmlSchemaProvider")]
 		[SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "XmlSchemaProvider")]
 		public static XmlSchemaType GetXmlSchemaForXLangMessage(XmlSchemaSet schemaSet)
 		{

@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,25 +17,23 @@
 #endregion
 
 using System.Diagnostics.CodeAnalysis;
-using System.ServiceModel.Channels;
 using System.Xml.Xsl;
 using Be.Stateless.BizTalk.ServiceModel.Channels;
 
 namespace Be.Stateless.BizTalk.Xml.Xsl
 {
 	/// <summary>
-	/// Translates <see cref="XmlMessage"/>s back and forth to native generic WCF <see cref="Message"/>s by applying an <see
-	/// cref="XslCompiledTransform"/> to their payloads.
+	/// Translates <see cref="XmlMessage"/>s back and forth to native generic WCF <see
+	/// cref="System.ServiceModel.Channels.Message"/>s by applying an <see cref="XslCompiledTransform"/> to their payloads.
 	/// </summary>
 	[SuppressMessage("ReSharper", "StaticMemberInGenericType")]
 	public class XsltTranslator<TRequestTransform, TResponseTransform> : XsltTranslatorBase
 		where TRequestTransform : XsltTransformBase, new()
 		where TResponseTransform : XsltTransformBase, new()
 	{
-		[SuppressMessage("Performance", "CA1810:Initialize reference type static fields inline")]
 		static XsltTranslator()
 		{
-			// TODO use XsltCache or equivalent
+			// cannot use XsltCache which has an implicit dependency on Microsoft.XLANGs.BaseTypes.TransformBase, see XslCompiledTransformDescriptorBuilder.ctor
 			// keep ref to compiled XSLTs at class level to avoid having to regenerate them and leak dynamic assemblies
 			_requestXslt = new TRequestTransform().Xslt;
 			_responseXslt = new TResponseTransform().Xslt;

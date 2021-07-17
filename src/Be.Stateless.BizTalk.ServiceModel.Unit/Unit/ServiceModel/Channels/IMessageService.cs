@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 #endregion
 
 using System.ServiceModel;
-using System.ServiceModel.Channels;
 using Be.Stateless.BizTalk.Unit.ServiceModel.Stub;
 
 namespace Be.Stateless.BizTalk.Unit.ServiceModel.Channels
@@ -30,15 +29,16 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Channels
 	public interface IMessageService
 	{
 		/// <summary>
-		/// Sends a <see cref="Message"/>-based request and returns the correlated <see cref="Message"/>-based response.
+		/// Sends a <see cref="System.ServiceModel.Channels.Message"/>-based request and returns the correlated <see
+		/// cref="System.ServiceModel.Channels.Message"/>-based response.
 		/// </summary>
 		/// <param name="request">
-		/// The request <see cref="Message"/> to be transmitted.
+		/// The request <see cref="System.ServiceModel.Channels.Message"/> to be transmitted.
 		/// </param>
 		/// <returns>
-		/// The <see cref="Message"/> received in response to the request.
+		/// The <see cref="System.ServiceModel.Channels.Message"/> received in response to the request.
 		/// </returns>
 		[OperationContract(Action = "*", ReplyAction = "*")]
-		Message Invoke(Message request);
+		System.ServiceModel.Channels.Message Invoke(System.ServiceModel.Channels.Message request);
 	}
 }

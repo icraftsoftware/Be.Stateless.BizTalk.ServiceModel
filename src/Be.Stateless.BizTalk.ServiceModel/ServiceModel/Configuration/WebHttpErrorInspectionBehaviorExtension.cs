@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,32 +23,16 @@ using Be.Stateless.BizTalk.ServiceModel.Description;
 
 namespace Be.Stateless.BizTalk.ServiceModel.Configuration
 {
-	/// <summary>
-	/// Represents a configuration element that contains the sub-element that specifies the <see
-	/// cref="FaultMessageHeaderMinifierBehavior"/> behavior extension, which enables to customize endpoint behaviors.
-	/// </summary>
 	[SuppressMessage("ReSharper", "UnusedType.Global", Justification = "Configuration element.")]
-	public class FaultMessageHeaderMinifierBehaviorExtensionElement : BehaviorExtensionElement
+	public class WebHttpErrorInspectionBehaviorExtension : BehaviorExtensionElement
 	{
 		#region Base Class Member Overrides
 
-		/// <summary>
-		/// Gets the type of behavior.
-		/// </summary>
-		/// <returns>
-		/// A <see cref="Type"/>.
-		/// </returns>
-		public override Type BehaviorType => typeof(FaultMessageHeaderMinifierBehavior);
+		public override Type BehaviorType => typeof(WebHttpErrorInspectionBehavior);
 
-		/// <summary>
-		/// Creates a behavior extension based on the current configuration settings.
-		/// </summary>
-		/// <returns>
-		/// The behavior extension.
-		/// </returns>
 		protected override object CreateBehavior()
 		{
-			return new FaultMessageHeaderMinifierBehavior();
+			return new WebHttpErrorInspectionBehavior();
 		}
 
 		#endregion

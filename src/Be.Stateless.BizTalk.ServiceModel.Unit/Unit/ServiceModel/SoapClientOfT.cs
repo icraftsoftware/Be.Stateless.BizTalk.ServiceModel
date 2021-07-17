@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 #endregion
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
@@ -29,7 +28,6 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 	{
 		#region Operators
 
-		[SuppressMessage("Usage", "CA2225:Operator overloads have named alternates")]
 		public static implicit operator TChannel(SoapClient<TChannel> client)
 		{
 			return client?.Channel;
@@ -37,7 +35,6 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 
 		#endregion
 
-		[SuppressMessage("Design", "CA1000:Do not declare static members on generic types")]
 		public static TChannel For(ServiceEndpoint serviceEndpoint)
 		{
 			if (serviceEndpoint == null) throw new ArgumentNullException(nameof(serviceEndpoint));

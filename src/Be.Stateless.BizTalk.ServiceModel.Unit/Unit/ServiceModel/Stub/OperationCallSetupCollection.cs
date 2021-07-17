@@ -30,7 +30,6 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 	/// cref="ISetupOperation{TContract}"/> in terms of either SOAP actions or in terms of <see cref="DocumentSpec"/> message
 	/// types.
 	/// </summary>
-	[SuppressMessage("Performance", "CA1822:Mark members as static")]
 	[SuppressMessage("ReSharper", "MemberCanBeMadeStatic.Local")]
 	internal class OperationCallSetupCollection
 	{

@@ -12,3 +12,13 @@ BizTalk.Factory's WCF relay composition with BizTalk Server schema and transform
 [![NuGet Version](https://img.shields.io/nuget/v/Be.Stateless.BizTalk.ServiceModel.Unit.svg?label=Be.Stateless.BizTalk.ServiceModel.Unit&style=flat)](https://www.nuget.org/packages/Be.Stateless.BizTalk.ServiceModel.Unit/)
 
 [![NuGet Version](https://img.shields.io/nuget/v/Be.Stateless.BizTalk.ServiceModel.NUnit.svg?label=Be.Stateless.BizTalk.ServiceModel.NUnit&style=flat)](https://www.nuget.org/packages/Be.Stateless.BizTalk.ServiceModel.NUnit/)
+
+
+## Prerequisites for Unit Tests
+
+Execute the following commands in an elevated PowerShell session before running the tests:
+
+```powershell
+netsh http add urlacl url=http://+:8000/soap-stub/ user=$Env:USERDOMAIN\$Env:USERNAME
+netsh http add urlacl url=http://+:8001/calculator/ user=$Env:USERDOMAIN\$Env:USERNAME
+```

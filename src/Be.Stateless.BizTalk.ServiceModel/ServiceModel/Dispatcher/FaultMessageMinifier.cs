@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Dispatcher
 	/// </summary>
 	/// <seealso href="http://weblogs.asp.net/paolopia/archive/2008/02/25/handling-custom-soap-headers-via-wcf-behaviors.aspx"/>
 	/// <seealso href="https://docs.microsoft.com/en-us/dotnet/framework/wcf/samples/message-inspectors"/>
-	public class FaultMessageHeaderMinifier : IClientMessageInspector
+	public class FaultMessageMinifier : IClientMessageInspector
 	{
 		#region IClientMessageInspector Members
 
@@ -50,7 +50,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Dispatcher
 		/// </returns>
 		public object BeforeSendRequest(ref System.ServiceModel.Channels.Message request, IClientChannel channel)
 		{
-			return null;
+			return default;
 		}
 
 		/// <summary>

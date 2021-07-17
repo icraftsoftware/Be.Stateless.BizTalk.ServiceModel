@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Be.Stateless.BizTalk.Messaging" Version="2.0.21171.58430" />
-    <PackageReference Include="Be.Stateless.Stream" Version="2.0.21104.42258" />
+    <PackageReference Include="Be.Stateless.Stream" Version="2.0.21212.92" />
     <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

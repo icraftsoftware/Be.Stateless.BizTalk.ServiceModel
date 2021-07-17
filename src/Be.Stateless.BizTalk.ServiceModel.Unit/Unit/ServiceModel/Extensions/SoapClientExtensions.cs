@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ using System.ServiceModel;
 namespace Be.Stateless.BizTalk.Unit.ServiceModel.Extensions
 {
 	/// <summary>
-	/// Allows to skip <see cref="ICommunicationObject"/> casts when calling either <see cref="ICommunicationObject.Abort()"/>
+	/// Allows to skip <see cref="ICommunicationObject"/> cast when calling either <see cref="ICommunicationObject.Abort()"/>
 	/// or <see cref="ICommunicationObject.Close()"/> on a <see cref="ClientBase{TChannel}"/> instance.
 	/// </summary>
 	[SuppressMessage("ReSharper", "LocalizableElement")]
@@ -31,13 +31,13 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Extensions
 	{
 		public static void Abort<TChannel>(this TChannel client) where TChannel : class
 		{
-			if (!(client is ICommunicationObject communicationObject)) throw new ArgumentException("client does support ICommunicationObject.", nameof(client));
+			if (client is not ICommunicationObject communicationObject) throw new ArgumentException("client does support ICommunicationObject.", nameof(client));
 			communicationObject.Abort();
 		}
 
 		public static void Close<TChannel>(this TChannel client) where TChannel : class
 		{
-			if (!(client is ICommunicationObject communicationObject)) throw new ArgumentException("client does support ICommunicationObject.", nameof(client));
+			if (client is not ICommunicationObject communicationObject) throw new ArgumentException("client does support ICommunicationObject.", nameof(client));
 			communicationObject.Close();
 		}
 	}

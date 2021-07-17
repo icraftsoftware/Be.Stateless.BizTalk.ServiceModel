@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 #endregion
 
 using System;
-using System.ServiceModel.Channels;
+using System.ServiceModel;
 using System.Xml;
 using Be.Stateless.Extensions;
 using Microsoft.XLANGs.RuntimeTypes;
@@ -26,7 +26,12 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Channels.Extensions
 {
 	public static class MessageExtensions
 	{
-		public static string GetMessageType(this Message message)
+		public static EndpointAddress GetEndpointAddress(this System.ServiceModel.Channels.Message message)
+		{
+			return new(message.Headers.To.GetComponents(UriComponents.SchemeAndServer, UriFormat.Unescaped));
+		}
+
+		public static string GetMessageType(this System.ServiceModel.Channels.Message message)
 		{
 			if (message == null) throw new ArgumentNullException(nameof(message));
 			var body = new XmlDocument();

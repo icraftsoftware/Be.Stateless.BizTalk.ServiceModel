@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 #endregion
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 
@@ -33,7 +32,6 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 	/// WCF service endpoint is listening and started before any unit test depending on it runs.
 	/// </remarks>
 	/// <seealso cref="SoapServiceHost{TService,TChannel}"/>
-	[SuppressMessage("Design", "CA1063:Implement IDisposable Correctly")]
 	public abstract class SoapServiceHostActivator<THost, TBinding> : ISoapServiceHost
 		where THost : SoapServiceHost, new()
 		where TBinding : Binding, new()
@@ -48,7 +46,6 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 
 		#region ISoapServiceHost Members
 
-		[SuppressMessage("Usage", "CA1816:Dispose methods should call SuppressFinalize")]
 		public void Dispose()
 		{
 			Host.Close();

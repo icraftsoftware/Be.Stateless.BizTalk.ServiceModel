@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -116,7 +116,6 @@ namespace Be.Stateless.BizTalk.ServiceModel.Channels
 		/// <param name="reader">
 		/// The <see cref="XmlReader"/> stream from which the object is deserialized.
 		/// </param>
-		[SuppressMessage("Reliability", "CA2000:Dispose objects before losing scope", Justification = "Done by method's caller.")]
 		public override void ReadXml(XmlReader reader)
 		{
 			if (reader == null) throw new ArgumentNullException(nameof(reader));

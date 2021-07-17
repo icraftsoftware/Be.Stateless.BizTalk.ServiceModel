@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Description
 	/// <summary>
 	/// Extends run-time behavior for an endpoint in client application.
 	/// </summary>
-	public class FaultMessageHeaderMinifierBehavior : IEndpointBehavior
+	public class FaultMessageMinificationBehavior : IEndpointBehavior
 	{
 		#region IEndpointBehavior Members
 
@@ -54,8 +54,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Description
 		public void ApplyClientBehavior(ServiceEndpoint endpoint, ClientRuntime clientRuntime)
 		{
 			if (clientRuntime == null) throw new ArgumentNullException(nameof(clientRuntime));
-			var fmm = new FaultMessageHeaderMinifier();
-			clientRuntime.MessageInspectors.Add(fmm);
+			clientRuntime.MessageInspectors.Add(new FaultMessageMinifier());
 		}
 
 		/// <summary>
