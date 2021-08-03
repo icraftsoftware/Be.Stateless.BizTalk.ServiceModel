@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -59,22 +59,22 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 
 		#region Base Class Member Overrides
 
-		public override void AfterTest(ITest testDetails)
+		public override void AfterTest(ITest test)
 		{
-			if (testDetails == null) throw new ArgumentNullException(nameof(testDetails));
-			if (testDetails.IsSuite)
+			if (test == null) throw new ArgumentNullException(nameof(test));
+			if (test.IsSuite)
 			{
 				ServiceHostActivator.Dispose();
 			}
 		}
 
-		public override void BeforeTest(ITest testDetails)
+		public override void BeforeTest(ITest test)
 		{
-			base.BeforeTest(testDetails);
-			if (testDetails == null) throw new ArgumentNullException(nameof(testDetails));
-			if (!testDetails.IsSuite)
+			base.BeforeTest(test);
+			if (test == null) throw new ArgumentNullException(nameof(test));
+			if (!test.IsSuite)
 			{
-				((SoapStub)((SoapStubHostActivator) ServiceHostActivator).Host.SingletonInstance).ClearSetups();
+				((SoapStub) ((SoapStubHostActivator) ServiceHostActivator).Host.SingletonInstance).ClearSetups();
 			}
 		}
 
