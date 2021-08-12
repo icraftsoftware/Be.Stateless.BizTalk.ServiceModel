@@ -39,7 +39,7 @@ namespace Be.Stateless.BizTalk.Dummies.ServiceModel.Security.Tokens
 			}
 			catch (JsonSerializationException)
 			{
-				return new Error { Message = json };
+				return new() { Message = json };
 			}
 		}
 

@@ -17,7 +17,6 @@
 #endregion
 
 using System.Diagnostics.CodeAnalysis;
-using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 using Be.Stateless.BizTalk.Schema;
@@ -88,7 +87,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Channels
 				schemaSet.Merge(((IXmlSchemaProvider) this).Schema);
 				schemaSet.Compile();
 				var schemaMetadata = SchemaMetadata.For<TSchemaBase>();
-				var element = (XmlSchemaElement) schemaSet.GlobalElements[new XmlQualifiedName(schemaMetadata.RootElementName, schemaMetadata.TargetNamespace)];
+				var element = (XmlSchemaElement) schemaSet.GlobalElements[new(schemaMetadata.RootElementName, schemaMetadata.TargetNamespace)];
 				return element.ElementSchemaType;
 			}
 

@@ -17,6 +17,7 @@
 #endregion
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Be.Stateless.BizTalk.Unit.ServiceModel.Stub;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
@@ -27,7 +28,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 	{
 		public RestStubHostActivatorAttribute()
 		{
-			RestStubHostActivator = new RestStubHostActivator();
+			RestStubHostActivator = new();
 		}
 
 		#region Base Class Member Overrides
@@ -40,14 +41,22 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 		public override void BeforeTest(ITest test)
 		{
 			if (test == null) throw new ArgumentNullException(nameof(test));
-			if (test.IsSuite && test.Fixture is IRestServiceHostInjection fixture) fixture.InjectRestServiceHost(RestStubHostActivator.Host);
-			if (!test.IsSuite) RestStubHostActivator.Host.Reset();
+			switch (test.IsSuite)
+			{
+				case true when test.Fixture is IRestServiceHostInjection fixture:
+					fixture.InjectRestServiceHost(RestStubHostActivator.Host);
+					break;
+				case false:
+					RestStubHostActivator.Host.Reset();
+					break;
+			}
 		}
 
 		public override ActionTargets Targets => ActionTargets.Suite | ActionTargets.Test;
 
 		#endregion
 
+		[SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "Public API.")]
 		protected RestStubHostActivator RestStubHostActivator { get; }
 	}
 }

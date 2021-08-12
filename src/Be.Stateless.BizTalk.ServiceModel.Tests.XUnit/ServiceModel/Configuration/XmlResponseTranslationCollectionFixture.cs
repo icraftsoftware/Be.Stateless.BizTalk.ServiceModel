@@ -16,7 +16,6 @@
 
 #endregion
 
-using System;
 using FluentAssertions;
 using Xunit;
 
@@ -30,9 +29,9 @@ namespace Be.Stateless.BizTalk.ServiceModel.Configuration
 			var translation1 = new XmlResponseTranslation { MatchingPattern = string.Empty, ReplacementPattern = "urn:ns", Url = "/api/v1/resource" };
 			var translation2 = new XmlResponseTranslation { MatchingPattern = "urn:old", ReplacementPattern = "urn:new", Url = "/api/v2/resource#fragment" };
 			var sut = new XmlResponseTranslationCollection { translation1, translation2 };
-			sut.GetXmlResponseTranslationByRequestUrl(new Uri("http://localhost/api/v1/resource")).Should().Be(translation1);
-			sut.GetXmlResponseTranslationByRequestUrl(new Uri("http://localhost/api/v2/resource")).Should().BeNull();
-			sut.GetXmlResponseTranslationByRequestUrl(new Uri("http://localhost/api/v2/resource#fragment")).Should().Be(translation2);
+			sut.GetXmlResponseTranslationByRequestUrl(new("http://localhost/api/v1/resource")).Should().Be(translation1);
+			sut.GetXmlResponseTranslationByRequestUrl(new("http://localhost/api/v2/resource")).Should().BeNull();
+			sut.GetXmlResponseTranslationByRequestUrl(new("http://localhost/api/v2/resource#fragment")).Should().Be(translation2);
 		}
 	}
 }

@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 
 			var client = SoapClient<ICalculatorStateServiceSync>.For(_calculatorServiceHost.Endpoint);
 			Assert.That(
-				() => client.Clean(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML)),
+				() => client.Clean(new(CALCULATOR_REQUEST_XML)),
 				Throws.InstanceOf<FaultException<ExceptionDetail>>()
 					.With.InnerException.Message.Contains("Cannot process this request."));
 			client.Abort();
@@ -58,7 +58,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 				.Setup(s => s.Clean(It.IsAny<XLangCalculatorRequest>()));
 
 			var client = SoapClient<ICalculatorStateServiceSync>.For(_calculatorServiceHost.Endpoint);
-			Assert.That(() => client.Clean(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML)), Throws.Nothing);
+			Assert.That(() => client.Clean(new(CALCULATOR_REQUEST_XML)), Throws.Nothing);
 			client.Close();
 		}
 
@@ -90,7 +90,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 
 			var client = SoapClient<ICalculatorStateService>.For(_calculatorServiceHost.Endpoint);
 			Assert.That(
-				() => client.Reset(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML)),
+				() => client.Reset(new(CALCULATOR_REQUEST_XML)),
 				Throws.InstanceOf<FaultException<ExceptionDetail>>()
 					.With.InnerException.Message.Contains("Cannot process this request."));
 			client.Abort();
@@ -104,7 +104,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 				.Setup(s => s.Reset(It.IsAny<XLangCalculatorRequest>()));
 
 			var client = SoapClient<ICalculatorStateService>.For(_calculatorServiceHost.Endpoint);
-			Assert.That(() => client.Reset(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML)), Throws.Nothing);
+			Assert.That(() => client.Reset(new(CALCULATOR_REQUEST_XML)), Throws.Nothing);
 			client.Close();
 		}
 

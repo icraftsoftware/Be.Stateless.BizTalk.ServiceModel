@@ -266,12 +266,12 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub
 				.Returns("file");
 
 			_soapStub.As<ISolicitResponse>()
-				.Setup(s => s.Request(new DocumentSpec("s", "a")))
+				.Setup(s => s.Request(new("s", "a")))
 				.Callback(null)
 				.Aborts();
 
 			_soapStub.As<ISolicitResponse>()
-				.Setup(s => s.Request(new DocumentSpec("s", "a")))
+				.Setup(s => s.Request(new("s", "a")))
 				.Callback(null)
 				.Returns("file");
 		}

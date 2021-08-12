@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -35,6 +35,18 @@ namespace Be.Stateless.BizTalk.ServiceModel
 {
 	public class TranslatingCalculatorServiceRelayFixture : IClassFixture<TranslatingCalculatorServiceHostActivator>, IClassFixture<SoapStubHostActivator>
 	{
+		#region Setup/Teardown
+
+		[SuppressMessage("ReSharper", "SuggestBaseTypeForParameter", Justification = "Necessary for typed xUnit injection.")]
+		public TranslatingCalculatorServiceRelayFixture(TranslatingCalculatorServiceHostActivator calculatorServiceHostActivator, SoapStubHostActivator soapStubHostActivator)
+		{
+			_calculatorServiceHost = calculatorServiceHostActivator.Host;
+			_soapStub = (SoapStub) soapStubHostActivator.Host.SingletonInstance;
+			_soapStub.ClearSetups();
+		}
+
+		#endregion
+
 		[Fact]
 		public void GetMetadata()
 		{
@@ -120,7 +132,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 			try
 			{
 				client = SoapClient<ITranslatingCalculatorService>.For(_calculatorServiceHost.Endpoint);
-				var calculatorResult = client.Subtract(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML));
+				var calculatorResult = client.Subtract(new(CALCULATOR_REQUEST_XML));
 				calculatorResult.RawXmlBody.Should().Be(string.Format(CALCULATOR_RESPONSE_XML, 1));
 				client.Close();
 			}
@@ -142,7 +154,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 			try
 			{
 				client = SoapClient<ITranslatingCalculatorService>.For(_calculatorServiceHost.Endpoint);
-				var calculatorResult = client.Subtract(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML));
+				var calculatorResult = client.Subtract(new(CALCULATOR_REQUEST_XML));
 				calculatorResult.RawXmlBody.Should().Be(string.Format(CALCULATOR_RESPONSE_XML, 3));
 				client.Close();
 			}
@@ -151,14 +163,6 @@ namespace Be.Stateless.BizTalk.ServiceModel
 				client?.Abort();
 				throw;
 			}
-		}
-
-		[SuppressMessage("ReSharper", "SuggestBaseTypeForParameter", Justification = "Necessary for typed xUnit injection.")]
-		public TranslatingCalculatorServiceRelayFixture(TranslatingCalculatorServiceHostActivator calculatorServiceHostActivator, SoapStubHostActivator soapStubHostActivator)
-		{
-			_calculatorServiceHost = calculatorServiceHostActivator.Host;
-			_soapStub = (SoapStub) soapStubHostActivator.Host.SingletonInstance;
-			_soapStub.ClearSetups();
 		}
 
 		private readonly SoapServiceHost _calculatorServiceHost;

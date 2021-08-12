@@ -92,7 +92,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Channels
 
 		private static XmlReader GetXmlReader(string xml)
 		{
-			var xmlReader = XmlReader.Create(new StringReader(xml), new XmlReaderSettings { CloseInput = true });
+			var xmlReader = XmlReader.Create(new StringReader(xml), new() { CloseInput = true });
 			xmlReader.MoveToContent();
 			return xmlReader;
 		}

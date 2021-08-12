@@ -115,7 +115,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 		public void RelaySyncInvalidMessageFails()
 		{
 			var client = SoapClient<IValidatingCalculatorService>.For(_calculatorServiceHost.Endpoint);
-			Invoking(() => client.Add(new XLangCalculatorRequest(INVALID_CALCULATOR_REQUEST_XML)))
+			Invoking(() => client.Add(new(INVALID_CALCULATOR_REQUEST_XML)))
 				.Should().Throw<FaultException<ExceptionDetail>>()
 				.Which.Detail.InnerException.InnerException.Message.Should().Contain(
 					"The element 'Arguments' in namespace 'urn:services.stateless.be:unit:calculator' has invalid child element 'Operand' in namespace 'urn:services.stateless.be:unit:calculator'. "
@@ -134,7 +134,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 			try
 			{
 				client = SoapClient<IValidatingCalculatorService>.For(_calculatorServiceHost.Endpoint);
-				var calculatorResult = client.Add(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML));
+				var calculatorResult = client.Add(new(CALCULATOR_REQUEST_XML));
 				calculatorResult.RawXmlBody.Should().Be(string.Format(CALCULATOR_RESPONSE_XML, 3));
 				client.Close();
 			}

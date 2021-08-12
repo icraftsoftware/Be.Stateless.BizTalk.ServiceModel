@@ -54,7 +54,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 				.Callback(() => throw new InvalidOperationException("Cannot process this request."));
 
 			var client = SoapClient<ICalculatorStateServiceSync>.For(_calculatorServiceHost.Endpoint);
-			Invoking(() => client.Clean(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML)))
+			Invoking(() => client.Clean(new(CALCULATOR_REQUEST_XML)))
 				.Should().Throw<FaultException<ExceptionDetail>>()
 				.WithMessage("Cannot process this request.");
 			client.Abort();
@@ -67,7 +67,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 				.Setup(s => s.Clean(It.IsAny<XLangCalculatorRequest>()));
 
 			var client = SoapClient<ICalculatorStateServiceSync>.For(_calculatorServiceHost.Endpoint);
-			Invoking(() => client.Clean(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML))).Should().NotThrow();
+			Invoking(() => client.Clean(new(CALCULATOR_REQUEST_XML))).Should().NotThrow();
 			client.Close();
 		}
 
@@ -97,7 +97,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 				.Callback(() => throw new InvalidOperationException("Cannot process this request."));
 
 			var client = SoapClient<ICalculatorStateService>.For(_calculatorServiceHost.Endpoint);
-			Invoking(() => client.Reset(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML)))
+			Invoking(() => client.Reset(new(CALCULATOR_REQUEST_XML)))
 				.Should().Throw<FaultException<ExceptionDetail>>()
 				.WithMessage("Cannot process this request.");
 			client.Abort();
@@ -110,7 +110,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 				.Setup(s => s.Reset(It.IsAny<XLangCalculatorRequest>()));
 
 			var client = SoapClient<ICalculatorStateService>.For(_calculatorServiceHost.Endpoint);
-			Invoking(() => client.Reset(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML))).Should().NotThrow();
+			Invoking(() => client.Reset(new(CALCULATOR_REQUEST_XML))).Should().NotThrow();
 			client.Close();
 		}
 

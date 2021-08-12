@@ -44,6 +44,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="NUnit" Version="3.13.2" />
+    <PackageReference Include="WireMock.Net" Version="1.4.23" />
   </ItemGroup>
 
   <ItemGroup>

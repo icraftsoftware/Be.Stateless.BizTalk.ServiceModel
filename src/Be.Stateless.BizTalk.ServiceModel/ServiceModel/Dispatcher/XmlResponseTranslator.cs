@@ -58,7 +58,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Dispatcher
 				reply = System.ServiceModel.Channels.Message.CreateMessage(
 					reply.Version,
 					reply.Headers.Action,
-					XmlReader.Create(new XmlTranslatorStream(reader, xmlResponseTranslation), new XmlReaderSettings { CloseInput = true }));
+					XmlReader.Create(new XmlTranslatorStream(reader, xmlResponseTranslation), new() { CloseInput = true }));
 				if (httpResponseMessage != null) reply.SetHttpResponseMessage(httpResponseMessage);
 			}
 		}

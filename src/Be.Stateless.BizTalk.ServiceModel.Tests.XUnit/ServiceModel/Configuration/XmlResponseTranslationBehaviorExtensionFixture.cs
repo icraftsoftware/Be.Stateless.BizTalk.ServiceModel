@@ -54,9 +54,9 @@ namespace Be.Stateless.BizTalk.ServiceModel.Configuration
 				+ "<translation matchingPattern=\"urn:old\" replacementPattern=\"urn:new\" url=\"/api/v2/resource\" />"
 				+ $"</translations></{nameof(XmlResponseTranslationBehaviorExtension).ToCamelCase()}>";
 			var sut = new XmlResponseTranslationBehaviorExtensionSpy {
-				XmlResponseTranslations = new XmlResponseTranslationCollection {
-					new XmlResponseTranslation { MatchingPattern = string.Empty, ReplacementPattern = "urn:ns", Url = "/api/v1/resource" },
-					new XmlResponseTranslation { MatchingPattern = "urn:old", ReplacementPattern = "urn:new", Url = "/api/v2/resource" }
+				XmlResponseTranslations = new() {
+					new() { MatchingPattern = string.Empty, ReplacementPattern = "urn:ns", Url = "/api/v1/resource" },
+					new() { MatchingPattern = "urn:old", ReplacementPattern = "urn:new", Url = "/api/v2/resource" }
 				}
 			};
 			XDocument.Parse(sut.SerializeToXml()).Should().BeEquivalentTo(XDocument.Parse(xml));
@@ -78,7 +78,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Configuration
 			public string SerializeToXml()
 			{
 				var builder = new StringBuilder();
-				using (var writer = XmlWriter.Create(builder, new XmlWriterSettings { CloseOutput = true, Indent = false, OmitXmlDeclaration = true }))
+				using (var writer = XmlWriter.Create(builder, new() { CloseOutput = true, Indent = false, OmitXmlDeclaration = true }))
 				{
 					writer.WriteStartElement(nameof(XmlResponseTranslationBehaviorExtension).ToCamelCase());
 					base.SerializeElement(writer, serializeCollectionKey: false);

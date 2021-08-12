@@ -125,7 +125,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 			try
 			{
 				client = SoapClient<ICalculatorService>.For(_calculatorServiceHost.Endpoint);
-				var calculatorResult = client.Add(new XmlCalculatorRequest(CALCULATOR_REQUEST_XML));
+				var calculatorResult = client.Add(new(CALCULATOR_REQUEST_XML));
 				calculatorResult.RawXmlBody.Should().Be(responseXml);
 				client.Close();
 			}
@@ -147,7 +147,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 			try
 			{
 				client = SoapClient<ICalculatorService>.For(_calculatorServiceHost.Endpoint);
-				var calculatorResult = client.Add(new XmlCalculatorRequest(CALCULATOR_REQUEST_XML));
+				var calculatorResult = client.Add(new(CALCULATOR_REQUEST_XML));
 				calculatorResult.RawXmlBody.Should().Be(string.Format(CALCULATOR_RESPONSE_XML, 3));
 				client.Close();
 			}
@@ -167,7 +167,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 				.Returns(new StringStream(string.Format(CALCULATOR_RESPONSE_XML, 1)));
 
 			var client = SoapClient<ICalculatorService>.For(_calculatorServiceHost.Endpoint);
-			Invoking(() => client.Subtract(new XmlCalculatorRequest(CALCULATOR_REQUEST_XML)))
+			Invoking(() => client.Subtract(new(CALCULATOR_REQUEST_XML)))
 				.Should().Throw<FaultException<ExceptionDetail>>()
 				.WithMessage("The request channel timed out while waiting for a reply*");
 			client.Close();

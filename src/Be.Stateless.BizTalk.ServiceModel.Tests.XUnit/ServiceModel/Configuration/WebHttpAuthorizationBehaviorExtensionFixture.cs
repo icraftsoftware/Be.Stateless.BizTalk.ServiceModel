@@ -70,7 +70,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Configuration
 			public string SerializeToXml()
 			{
 				var builder = new StringBuilder();
-				using (var writer = XmlWriter.Create(builder, new XmlWriterSettings { CloseOutput = true, Indent = false, OmitXmlDeclaration = true }))
+				using (var writer = XmlWriter.Create(builder, new() { CloseOutput = true, Indent = false, OmitXmlDeclaration = true }))
 				{
 					writer.WriteStartElement(nameof(WebHttpAuthorizationBehaviorExtension).ToCamelCase());
 					base.SerializeElement(writer, serializeCollectionKey: false);

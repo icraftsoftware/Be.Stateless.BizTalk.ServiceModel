@@ -64,8 +64,9 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 		where TService : TChannel, new()
 		where TChannel : class
 	{
-		private static bool IsSingleton => typeof(TService).GetCustomAttribute(typeof(ServiceBehaviorAttribute)) is ServiceBehaviorAttribute
-			{ InstanceContextMode: InstanceContextMode.Single };
+		private static bool IsSingleton => typeof(TService).GetCustomAttribute(typeof(ServiceBehaviorAttribute)) is ServiceBehaviorAttribute {
+			InstanceContextMode: InstanceContextMode.Single
+		};
 
 		#region Base Class Member Overrides
 
@@ -75,8 +76,8 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 
 		protected internal override void Initialize(Uri address)
 		{
-			if (IsSingleton) InitializeDescription(new TService(), new UriSchemeKeyedCollection(address));
-			else InitializeDescription(typeof(TService), new UriSchemeKeyedCollection(address));
+			if (IsSingleton) InitializeDescription(new TService(), new(address));
+			else InitializeDescription(typeof(TService), new(address));
 			var debugBehavior = Description!.Behaviors.Find<ServiceDebugBehavior>();
 			if (debugBehavior != null) debugBehavior.IncludeExceptionDetailInFaults = true;
 			else Description.Behaviors.Add(new ServiceDebugBehavior { IncludeExceptionDetailInFaults = true });
@@ -96,7 +97,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 			var metaDataBehavior = Description.Behaviors.Find<ServiceMetadataBehavior>();
 			if (metaDataBehavior == null)
 			{
-				metaDataBehavior = new ServiceMetadataBehavior();
+				metaDataBehavior = new();
 				Description.Behaviors.Add(metaDataBehavior);
 			}
 			debugBehavior.HttpHelpPageEnabled = metaDataBehavior.HttpGetEnabled = scheme.IndexOf("http", StringComparison.OrdinalIgnoreCase) >= 0;

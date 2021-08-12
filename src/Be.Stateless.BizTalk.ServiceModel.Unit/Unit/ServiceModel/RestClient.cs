@@ -80,9 +80,9 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel
 			restClientFactory.Endpoint.Binding = new WebHttpBinding {
 				ProxyAddress = ProxyUri,
 				UseDefaultWebProxy = ProxyUri == null,
-				Security = new WebHttpSecurity {
+				Security = new() {
 					Mode = request.Headers.To.Scheme == Uri.UriSchemeHttps ? WebHttpSecurityMode.Transport : WebHttpSecurityMode.None,
-					Transport = new HttpTransportSecurity { ClientCredentialType = HttpClientCredentialType.None }
+					Transport = new() { ClientCredentialType = HttpClientCredentialType.None }
 				}
 			};
 			restClientFactory.Endpoint.EndpointBehaviors.Add(new WebHttpBehavior { FaultExceptionEnabled = true });

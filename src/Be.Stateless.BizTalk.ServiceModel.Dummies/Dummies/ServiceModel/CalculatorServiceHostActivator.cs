@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 
 #endregion
 
-using System;
 using System.Diagnostics.CodeAnalysis;
 using System.ServiceModel;
 using Be.Stateless.BizTalk.Unit.ServiceModel;
@@ -26,6 +25,6 @@ namespace Be.Stateless.BizTalk.Dummies.ServiceModel
 	[SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
 	public class CalculatorServiceHostActivator : SoapServiceHostActivator<SoapServiceHost<CalculatorServiceRelay, ICalculatorService>, BasicHttpBinding>
 	{
-		public CalculatorServiceHostActivator() : base(new Uri("http://localhost:8001/calculator")) { }
+		public CalculatorServiceHostActivator() : base(new("http://localhost:8001/calculator")) { }
 	}
 }

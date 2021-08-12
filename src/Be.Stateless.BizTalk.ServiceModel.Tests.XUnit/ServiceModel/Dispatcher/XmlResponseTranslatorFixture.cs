@@ -20,7 +20,6 @@ using System;
 using System.Diagnostics;
 using System.Net;
 using Be.Stateless.BizTalk.ServiceModel.Channels.Extensions;
-using Be.Stateless.BizTalk.ServiceModel.Configuration;
 using Be.Stateless.BizTalk.ServiceModel.Description;
 using Be.Stateless.BizTalk.Unit.ServiceModel;
 using Be.Stateless.BizTalk.Unit.ServiceModel.Stub;
@@ -104,8 +103,8 @@ namespace Be.Stateless.BizTalk.ServiceModel.Dispatcher
 		}
 
 		private XmlResponseTranslationBehavior XmlResponseTranslationBehavior { get; } = new(
-			new XmlResponseTranslationCollection {
-				new XmlResponseTranslation { MatchingPattern = string.Empty, ReplacementPattern = "urn:ns", Url = "/api/resource" }
+			new() {
+				new() { MatchingPattern = string.Empty, ReplacementPattern = "urn:ns", Url = "/api/resource" }
 			});
 
 		private readonly ITestOutputHelper _output;

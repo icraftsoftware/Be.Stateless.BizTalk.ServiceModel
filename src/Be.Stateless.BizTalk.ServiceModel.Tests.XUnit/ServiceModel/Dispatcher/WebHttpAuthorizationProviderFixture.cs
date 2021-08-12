@@ -232,7 +232,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Dispatcher
 			#endregion
 		}
 
-		private Uri AuthorizationTokenServiceUri => _restStubHostActivator.Host.Urls[0].AppendPathSegment("/sts/token").ToUri();
+		private Uri AuthorizationTokenServiceUri => RestStubHostActivator.Uri.AppendPathSegment("/sts/token").ToUri();
 
 		private WebHttpAuthorizationBehavior WebHttpAuthorizationBehavior =>
 			new(typeof(Dummies.ServiceModel.Security.AuthorizationTokenServiceMiddleware), AuthorizationTokenServiceUri);

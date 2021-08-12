@@ -63,7 +63,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Channels.Extensions
 		{
 			foreach (var name in propertyNames)
 			{
-				if (messageProperties.TryGetProperty(name, out var value)) yield return new PropertyValuePair(name, value);
+				if (messageProperties.TryGetProperty(name, out var value)) yield return new(name, value);
 			}
 		}
 

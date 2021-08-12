@@ -39,7 +39,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Configuration
 
 		protected override object CreateBehavior()
 		{
-			return new WebHttpAuthorizationBehavior(AuthorizationTokenServiceMiddlewareType, new Uri(AuthorizationTokenServiceUri));
+			return new WebHttpAuthorizationBehavior(AuthorizationTokenServiceMiddlewareType, new(AuthorizationTokenServiceUri));
 		}
 
 		#endregion

@@ -52,10 +52,9 @@ namespace Be.Stateless.BizTalk.ServiceModel.Dispatcher
 		{
 			// TODO only output WireMock logged messages when test has failed and it is a WireMock exception, ? custom Fact attribute, a la SkippableFact ?
 			// see https://github.com/xunit/xunit/issues/416#issuecomment-378512739
-			//var type = _output.GetType();
-			//var testMember = type.GetField("test", BindingFlags.Instance | BindingFlags.NonPublic);
-			//var value = testMember.GetValue(_output);
-			//var test = (ITest) value;
+			//var test = (ITest) Reflector.GetField(_output, "test");
+			//var @case = test.TestCase;
+			//var sink = Reflector.GetProperty(@case, "DiagnosticMessageSink");
 			if (Debugger.IsAttached) _output.WriteLine(_restStubHostActivator.LogEntries);
 		}
 
@@ -87,7 +86,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Dispatcher
 				.And.ContainKey(MessagePropertiesExtensions.PROPERTIES_TO_WRITE_KEY);
 			response.Properties.GetPropertiesToWrite()
 				.Should().NotBeNull()
-				.And.BeEquivalentTo(new KeyValuePair<XmlQualifiedName, object>(BtsProperties.InterchangeID.QName, "interchange"));
+				.And.BeEquivalentTo(new[] { new KeyValuePair<XmlQualifiedName, object>(BtsProperties.InterchangeID.QName, "interchange") });
 		}
 
 		[Fact(Skip = "Don't know how to return a fault with stub.")]
@@ -173,7 +172,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Dispatcher
 				.And.NotContainKey(MessagePropertiesExtensions.PROPERTIES_TO_WRITE_KEY);
 			response.Properties.GetPropertiesToPromote()
 				.Should().NotBeNull()
-				.And.BeEquivalentTo(new KeyValuePair<XmlQualifiedName, object>(BtsProperties.MessageType.QName, "message#type"));
+				.And.BeEquivalentTo(new[] { new KeyValuePair<XmlQualifiedName, object>(BtsProperties.MessageType.QName, "message#type") });
 		}
 
 		[Fact]
@@ -205,16 +204,16 @@ namespace Be.Stateless.BizTalk.ServiceModel.Dispatcher
 				.And.ContainKey(MessagePropertiesExtensions.PROPERTIES_TO_WRITE_KEY);
 			response.Properties.GetPropertiesToPromote()
 				.Should().NotBeNull()
-				.And.BeEquivalentTo(new KeyValuePair<XmlQualifiedName, object>(BtsProperties.MessageType.QName, "message#type"));
+				.And.BeEquivalentTo(new[] { new KeyValuePair<XmlQualifiedName, object>(BtsProperties.MessageType.QName, "message#type") });
 			response.Properties.GetPropertiesToWrite()
 				.Should().NotBeNull()
-				.And.BeEquivalentTo(new KeyValuePair<XmlQualifiedName, object>(BtsProperties.InterchangeID.QName, "interchange"));
+				.And.BeEquivalentTo(new[] { new KeyValuePair<XmlQualifiedName, object>(BtsProperties.InterchangeID.QName, "interchange") });
 		}
 
 		private PropertyPropagationBehavior PropertyPropagationBehavior => new(
-			new PropertyPropagationCollection {
-				new PropertyPropagation { Property = BtsProperties.MessageType, Mode = PropagationMode.Promote },
-				new PropertyPropagation { Property = BtsProperties.InterchangeID, Mode = PropagationMode.Write }
+			new() {
+				new() { Property = BtsProperties.MessageType, Mode = PropagationMode.Promote },
+				new() { Property = BtsProperties.InterchangeID, Mode = PropagationMode.Write }
 			});
 
 		private readonly ITestOutputHelper _output;

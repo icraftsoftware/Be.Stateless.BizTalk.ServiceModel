@@ -40,7 +40,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Security
 			authorizationTokenMock.Setup(m => m.ExpirationTime).Returns(DateTime.UtcNow.AddHours(1));
 			AuthorizationToken = authorizationTokenMock.Object;
 
-			authorizationTokenMock = new Mock<IAuthorizationToken>();
+			authorizationTokenMock = new();
 			authorizationTokenMock.Setup(m => m.ExpirationTime).Returns(DateTime.UtcNow.AddHours(-1));
 			ExpiredAuthorizationToken = authorizationTokenMock.Object;
 		}
@@ -67,7 +67,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Security
 					{
 						// allow AddAuthorizationToken to try acquiring same lock and force it to wait
 						Thread.Sleep(500);
-						cache.Add(new CacheItem(Key, AuthorizationToken), new CacheItemPolicy { AbsoluteExpiration = AuthorizationToken.ExpirationTime });
+						cache.Add(new(Key, AuthorizationToken), new() { AbsoluteExpiration = AuthorizationToken.ExpirationTime });
 						Thread.Sleep(500);
 					}
 					Thread.Sleep(500);
@@ -110,7 +110,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Security
 			IAuthorizationToken AuthorizationTokenFactory()
 			{
 				// fake that authorization token has been added to cache concurrently
-				cache.Add(new CacheItem(Key, AuthorizationToken), new CacheItemPolicy { AbsoluteExpiration = AuthorizationToken.ExpirationTime });
+				cache.Add(new(Key, AuthorizationToken), new() { AbsoluteExpiration = AuthorizationToken.ExpirationTime });
 				return AuthorizationToken;
 			}
 

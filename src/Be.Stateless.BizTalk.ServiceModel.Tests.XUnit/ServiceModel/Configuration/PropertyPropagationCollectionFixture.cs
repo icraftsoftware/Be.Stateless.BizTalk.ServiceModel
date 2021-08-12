@@ -31,7 +31,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Configuration
 				new PropertyPropagation { Property = BtsProperties.MessageType, Mode = PropagationMode.Promote },
 				new PropertyPropagation { Property = BtsProperties.Operation, Mode = PropagationMode.Write }
 			};
-			sut.GetPropertyNamesToPromote().Should().BeEquivalentTo(BtsProperties.MessageType.QName);
+			sut.GetPropertyNamesToPromote().Should().BeEquivalentTo(new[] { BtsProperties.MessageType.QName });
 		}
 
 		[Fact]
@@ -41,7 +41,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Configuration
 				new PropertyPropagation { Property = BtsProperties.MessageType, Mode = PropagationMode.Promote },
 				new PropertyPropagation { Property = BtsProperties.Operation, Mode = PropagationMode.Write }
 			};
-			sut.GetPropertyNamesToWrite().Should().BeEquivalentTo(BtsProperties.Operation.QName);
+			sut.GetPropertyNamesToWrite().Should().BeEquivalentTo(new[] { BtsProperties.Operation.QName });
 		}
 	}
 }

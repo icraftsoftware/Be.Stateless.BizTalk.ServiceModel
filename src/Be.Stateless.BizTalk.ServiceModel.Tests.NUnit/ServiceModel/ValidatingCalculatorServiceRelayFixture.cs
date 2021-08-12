@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -104,7 +104,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 		{
 			var client = SoapClient<IValidatingCalculatorService>.For(_calculatorServiceHost.Endpoint);
 			Assert.That(
-				() => client.Add(new XLangCalculatorRequest(INVALID_CALCULATOR_REQUEST_XML)),
+				() => client.Add(new(INVALID_CALCULATOR_REQUEST_XML)),
 				Throws.TypeOf<FaultException<ExceptionDetail>>()
 					.With.Property("Detail")
 					.With.InnerException.InnerException.Message.Contains(
@@ -124,7 +124,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 			try
 			{
 				client = SoapClient<IValidatingCalculatorService>.For(_calculatorServiceHost.Endpoint);
-				var calculatorResult = client.Add(new XLangCalculatorRequest(CALCULATOR_REQUEST_XML));
+				var calculatorResult = client.Add(new(CALCULATOR_REQUEST_XML));
 				Assert.AreEqual(string.Format(CALCULATOR_RESPONSE_XML, 3), calculatorResult.RawXmlBody);
 				client.Close();
 			}

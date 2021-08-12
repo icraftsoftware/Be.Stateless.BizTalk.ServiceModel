@@ -58,10 +58,10 @@ namespace Be.Stateless.BizTalk.ServiceModel.Configuration
 				+ "<property name=\"MessageDestination\" namespace=\"http://schemas.microsoft.com/BizTalk/2003/system-properties\" mode=\"Write\" />"
 				+ $"</properties></{nameof(PropertyPropagationBehaviorExtension).ToCamelCase()}>";
 			var sut = new PropertyPropagationBehaviorExtensionSpy {
-				PropertyPropagations = new PropertyPropagationCollection {
-					new PropertyPropagation { Property = BtsProperties.MessageType, Mode = PropagationMode.Promote },
-					new PropertyPropagation { Property = BtsProperties.Operation, Mode = PropagationMode.Write },
-					new PropertyPropagation { Property = BtsProperties.MessageDestination }
+				PropertyPropagations = new() {
+					new() { Property = BtsProperties.MessageType, Mode = PropagationMode.Promote },
+					new() { Property = BtsProperties.Operation, Mode = PropagationMode.Write },
+					new() { Property = BtsProperties.MessageDestination }
 				}
 			};
 			XDocument.Parse(sut.SerializeToXml()).Should().BeEquivalentTo(XDocument.Parse(xml));
@@ -83,7 +83,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Configuration
 			public string SerializeToXml()
 			{
 				var builder = new StringBuilder();
-				using (var writer = XmlWriter.Create(builder, new XmlWriterSettings { CloseOutput = true, Indent = false, OmitXmlDeclaration = true }))
+				using (var writer = XmlWriter.Create(builder, new() { CloseOutput = true, Indent = false, OmitXmlDeclaration = true }))
 				{
 					writer.WriteStartElement(nameof(PropertyPropagationBehaviorExtension).ToCamelCase());
 					base.SerializeElement(writer, serializeCollectionKey: false);

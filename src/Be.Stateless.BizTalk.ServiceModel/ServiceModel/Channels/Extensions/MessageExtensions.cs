@@ -79,7 +79,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Channels.Extensions
 			{
 				reader.ReadStartElement("Binary");
 				var bodyText = Encoding.UTF8.GetString(reader.ReadContentAsBase64());
-				return XmlReader.Create(new StringReader(bodyText), new XmlReaderSettings { IgnoreWhitespace = true });
+				return XmlReader.Create(new StringReader(bodyText), new() { IgnoreWhitespace = true });
 			}
 		}
 

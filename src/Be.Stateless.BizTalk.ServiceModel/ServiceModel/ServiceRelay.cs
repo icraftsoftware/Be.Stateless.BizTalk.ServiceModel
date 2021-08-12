@@ -37,7 +37,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 		[SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Public API.")]
 		protected ServiceRelay()
 		{
-			_clientRelayFactory = () => new ClientRelay();
+			_clientRelayFactory = () => new();
 		}
 
 		/// <summary>
@@ -50,7 +50,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 		[SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Public API.")]
 		protected ServiceRelay(string endpointConfigurationName)
 		{
-			_clientRelayFactory = () => new ClientRelay(endpointConfigurationName);
+			_clientRelayFactory = () => new(endpointConfigurationName);
 		}
 
 		/// <summary>
@@ -66,7 +66,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 		[SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Public API.")]
 		protected ServiceRelay(string endpointConfigurationName, string remoteAddress)
 		{
-			_clientRelayFactory = () => new ClientRelay(endpointConfigurationName, remoteAddress);
+			_clientRelayFactory = () => new(endpointConfigurationName, remoteAddress);
 		}
 
 		/// <summary>
@@ -81,7 +81,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 		/// </param>
 		protected ServiceRelay(Binding binding, EndpointAddress endpointAddress)
 		{
-			_clientRelayFactory = () => new ClientRelay(binding, endpointAddress);
+			_clientRelayFactory = () => new(binding, endpointAddress);
 		}
 
 		/// <summary>

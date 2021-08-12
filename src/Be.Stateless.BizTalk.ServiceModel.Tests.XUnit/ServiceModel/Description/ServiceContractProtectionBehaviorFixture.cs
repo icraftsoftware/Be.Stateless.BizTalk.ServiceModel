@@ -30,7 +30,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Description
 		[Fact]
 		public void SignProtectionLevelEntailsMessageNotSignedAndNotEncrypted()
 		{
-			var serviceEndPoint = new ServiceEndpoint(new ContractDescription("contract"));
+			var serviceEndPoint = new ServiceEndpoint(new("contract"));
 			var bindingParameters = new BindingParameterCollection();
 
 			var sut = new ServiceContractProtectionBehavior(ProtectionLevel.None);
@@ -53,7 +53,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Description
 		public void SignProtectionLevelEntailsMessageSignedAndEncrypted()
 		{
 			var behavior = new ServiceContractProtectionBehavior(ProtectionLevel.EncryptAndSign);
-			var serviceEndPoint = new ServiceEndpoint(new ContractDescription("contract"));
+			var serviceEndPoint = new ServiceEndpoint(new("contract"));
 
 			var bindingParameters = new BindingParameterCollection();
 			behavior.AddBindingParameters(serviceEndPoint, bindingParameters);
@@ -75,7 +75,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Description
 		public void SignProtectionLevelEntailsMessageSignedAndNotEncrypted()
 		{
 			var behavior = new ServiceContractProtectionBehavior(ProtectionLevel.Sign);
-			var serviceEndPoint = new ServiceEndpoint(new ContractDescription("contract"));
+			var serviceEndPoint = new ServiceEndpoint(new("contract"));
 
 			var bindingParameters = new BindingParameterCollection();
 			behavior.AddBindingParameters(serviceEndPoint, bindingParameters);

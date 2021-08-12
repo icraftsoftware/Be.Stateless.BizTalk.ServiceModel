@@ -30,7 +30,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Security
 	{
 		public static AuthorizationTokenCache Instance { get; } = new();
 
-		private AuthorizationTokenCache() : this(new MemoryCache(nameof(AuthorizationTokenCache))) { }
+		private AuthorizationTokenCache() : this(new(nameof(AuthorizationTokenCache))) { }
 
 		[SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "For testing purposes.")]
 		internal AuthorizationTokenCache(MemoryCache cache)
@@ -62,7 +62,7 @@ namespace Be.Stateless.BizTalk.ServiceModel.Security
 				if (_cache.Contains(key)) return null;
 				var token = authorizationTokenFactory() ?? throw new InvalidOperationException($"AuthorizationToken factory method returns null for key '{key}'.");
 				var cacheItem = new CacheItem(key, token);
-				if (!_cache.Add(cacheItem, new CacheItemPolicy { AbsoluteExpiration = token.ExpirationTime }))
+				if (!_cache.Add(cacheItem, new() { AbsoluteExpiration = token.ExpirationTime }))
 					throw new InvalidOperationException($"{nameof(AuthorizationTokenCache)} has a concurrency issue because it should not contain an entry for key '{key}'.");
 				return (IAuthorizationToken) cacheItem.Value;
 			}

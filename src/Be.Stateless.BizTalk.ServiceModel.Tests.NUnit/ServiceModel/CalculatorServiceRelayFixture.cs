@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -114,7 +114,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 			try
 			{
 				client = SoapClient<ICalculatorService>.For(_calculatorServiceHost.Endpoint);
-				var calculatorResult = client.Add(new XmlCalculatorRequest(CALCULATOR_REQUEST_XML));
+				var calculatorResult = client.Add(new(CALCULATOR_REQUEST_XML));
 				Assert.That(calculatorResult.RawXmlBody, Is.EqualTo(responseXml));
 				client.Close();
 			}
@@ -136,7 +136,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 			try
 			{
 				client = SoapClient<ICalculatorService>.For(_calculatorServiceHost.Endpoint);
-				var calculatorResult = client.Add(new XmlCalculatorRequest(CALCULATOR_REQUEST_XML));
+				var calculatorResult = client.Add(new(CALCULATOR_REQUEST_XML));
 				Assert.That(calculatorResult.RawXmlBody, Is.EqualTo(string.Format(CALCULATOR_RESPONSE_XML, 3)));
 				client.Close();
 			}
@@ -157,7 +157,7 @@ namespace Be.Stateless.BizTalk.ServiceModel
 
 			var client = SoapClient<ICalculatorService>.For(_calculatorServiceHost.Endpoint);
 			Assert.That(
-				() => client.Subtract(new XmlCalculatorRequest(CALCULATOR_REQUEST_XML)),
+				() => client.Subtract(new(CALCULATOR_REQUEST_XML)),
 				Throws.TypeOf<FaultException<ExceptionDetail>>()
 					.With.Message.Contains("The request channel timed out while waiting for a reply"));
 			client.Close();
