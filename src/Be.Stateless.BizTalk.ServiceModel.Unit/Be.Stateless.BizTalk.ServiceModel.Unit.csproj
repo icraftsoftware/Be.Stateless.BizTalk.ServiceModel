@@ -38,9 +38,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Be.Stateless.Extensions" Version="2.0.21281.26117" />
-    <PackageReference Include="Be.Stateless.Stream" Version="2.0.21281.39270" />
-    <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.1">
+    <PackageReference Include="Be.Stateless.Extensions" Version="2.0.21343.20798" />
+    <PackageReference Include="Be.Stateless.Stream" Version="2.0.21360.33353" />
+    <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -49,11 +49,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="WireMock.Net" Version="1.4.23" />
     <PackageReference Include="WireMock.Net.Abstractions" Version="1.4.23" />
   </ItemGroup>

@@ -38,23 +38,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Be.Stateless.BizTalk.Abstractions" Version="2.0.21284.24948" />
-    <PackageReference Include="Be.Stateless.BizTalk.Messaging" Version="2.0.21285.39917" />
-    <PackageReference Include="Be.Stateless.BizTalk.Stream" Version="2.0.21285.39338" />
-    <PackageReference Include="Be.Stateless.BizTalk.Xml" Version="2.0.21285.38612" />
-    <PackageReference Include="Be.Stateless.Extensions" Version="2.0.21281.26117" />
-    <PackageReference Include="Be.Stateless.Stream" Version="2.0.21281.39270" />
-    <PackageReference Include="Be.Stateless.Xml" Version="2.0.21281.40683" />
-    <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.1">
+    <PackageReference Include="Be.Stateless.BizTalk.Abstractions" Version="2.0.21360.32031" />
+    <PackageReference Include="Be.Stateless.BizTalk.Messaging" Version="2.0.21360.39271" />
+    <PackageReference Include="Be.Stateless.BizTalk.Stream" Version="2.0.21360.34984" />
+    <PackageReference Include="Be.Stateless.BizTalk.Xml" Version="2.0.21360.34334" />
+    <PackageReference Include="Be.Stateless.Extensions" Version="2.0.21343.20798" />
+    <PackageReference Include="Be.Stateless.Runtime" Version="2.0.21285.37924" />
+    <PackageReference Include="Be.Stateless.Stream" Version="2.0.21360.33353" />
+    <PackageReference Include="Be.Stateless.Xml" Version="2.0.21360.33935" />
+    <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="log4net" Version="2.0.12" />
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
+    <PackageReference Include="log4net" Version="2.0.13" />
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
