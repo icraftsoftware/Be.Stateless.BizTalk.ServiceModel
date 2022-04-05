@@ -66,7 +66,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 		/// </param>
 		/// <returns>
 		/// An object that allows to record/setup the action to perform upon the invocation of some SOAP action, that is service
-		/// contract operation. 
+		/// contract operation.
 		/// </returns>
 		IOperationCallSetup<TContract> Setup(Expression<Action<TContract>> operation);
 	}
@@ -94,7 +94,7 @@ namespace Be.Stateless.BizTalk.Unit.ServiceModel.Stub.Language
 		/// </param>
 		/// <returns>
 		/// An object that allows to record/setup the action to perform upon the invocation of some SOAP action, that is service
-		/// contract operation. 
+		/// contract operation.
 		/// </returns>
 		IOperationCallSetup<TContract, TResult> Setup<TResult>(Expression<Func<TContract, TResult>> operation);
 	}

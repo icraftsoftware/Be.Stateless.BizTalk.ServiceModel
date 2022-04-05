@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2021 François Chabot
+// Copyright © 2012 - 2022 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -41,12 +41,12 @@ namespace Be.Stateless.BizTalk.Xml.Xsl
 		/// <summary>
 		/// <see cref="XslCompiledTransform"/> to apply to the request <see cref="XmlMessage"/>'s body.
 		/// </summary>
-		protected override XslCompiledTransform RequestXslt => XsltCache.Instance[typeof(TRequestTransform)].XslCompiledTransform;
+		protected override XslCompiledTransform RequestXslt => XsltCache.Instance[typeof(TRequestTransform)].CompiledXslt;
 
 		/// <summary>
 		/// <see cref="XslCompiledTransform"/> to apply to get the response <see cref="XmlMessage"/>'s body.
 		/// </summary>
-		protected override XslCompiledTransform ResponseXslt => XsltCache.Instance[typeof(TResponseTransform)].XslCompiledTransform;
+		protected override XslCompiledTransform ResponseXslt => XsltCache.Instance[typeof(TResponseTransform)].CompiledXslt;
 
 		/// <summary>
 		/// Translates a request <see cref="XmlMessage"/>-derived message's body, whose content is given by <paramref

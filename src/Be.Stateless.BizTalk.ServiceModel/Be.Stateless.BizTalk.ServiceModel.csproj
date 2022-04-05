@@ -38,10 +38,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Be.Stateless.BizTalk.Abstractions" Version="2.1.22025.23485" />
-    <PackageReference Include="Be.Stateless.BizTalk.Messaging" Version="2.1.22025.26745" />
-    <PackageReference Include="Be.Stateless.BizTalk.Stream" Version="2.1.22025.26169" />
-    <PackageReference Include="Be.Stateless.BizTalk.Xml" Version="2.1.22025.24612" />
+    <PackageReference Include="Be.Stateless.BizTalk.Abstractions" Version="2.1.22046.40892" />
+    <PackageReference Include="Be.Stateless.BizTalk.Messaging" Version="2.1.22095.48625" />
+    <PackageReference Include="Be.Stateless.BizTalk.Stream" Version="2.1.22095.24182" />
+    <PackageReference Include="Be.Stateless.BizTalk.Xml" Version="2.1.22095.23536" />
     <PackageReference Include="Be.Stateless.Extensions" Version="2.1.22025.20499" />
     <PackageReference Include="Be.Stateless.Runtime" Version="2.1.22025.21140" />
     <PackageReference Include="Be.Stateless.Stream" Version="2.1.22025.21947" />
